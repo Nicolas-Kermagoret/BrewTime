@@ -1,0 +1,193 @@
+package com.example.nicolas.brewtime;
+
+import java.util.ArrayList;
+
+/**
+ * Created by nicolas on 02/01/16.
+ */
+public class Beer {
+
+    private String name;
+    private String type;
+    private String brassage;
+    private String secondaire;
+    private String garde;
+    private String embouteillage;
+    private String degustation;
+
+    private ArrayList<String> malts;
+    private ArrayList<String> houblonsAmer;
+    private ArrayList<String> houblonsArome;
+    private ArrayList<String> epices;
+    private ArrayList<String> levures;
+
+    private int quantity;
+
+    private ArrayList<String> maltsQuantity;
+    private ArrayList<String> houblonsAmerQuantity;
+    private ArrayList<String> houblonsAromeQuantity;
+    private ArrayList<String> epicesQuantity;
+    private ArrayList<String> levuresQuantity;
+
+    public Beer(){
+        this.malts = new ArrayList<String>();
+        this.houblonsAmer = new ArrayList<String>();
+        this.houblonsArome = new ArrayList<String>();
+        this.epices = new ArrayList<String>();
+        this.levures = new ArrayList<String>();
+
+        this.maltsQuantity = new ArrayList<String>();
+        this.houblonsAmerQuantity = new ArrayList<String>();
+        this.houblonsAromeQuantity = new ArrayList<String>();
+        this.epicesQuantity = new ArrayList<String>();
+        this.levuresQuantity = new ArrayList<String>();
+
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getBrassage() {
+        return brassage;
+    }
+
+    public String getSecondaire() {
+        return secondaire;
+    }
+
+    public String getGarde() {
+        return garde;
+    }
+
+    public String getEmbouteillage() {
+        return embouteillage;
+    }
+
+    public String getDegustation() {
+        return degustation;
+    }
+
+    public ArrayList<String> getMalts() {
+        return malts;
+    }
+
+    public ArrayList<String> getHoublonsAmer() {
+        return houblonsAmer;
+    }
+
+    public ArrayList<String> getHoublonsArome() {
+        return houblonsArome;
+    }
+
+    public ArrayList<String> getEpices() {
+        return epices;
+    }
+
+    public ArrayList<String> getLevures() {
+        return levures;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public ArrayList<String> getMaltsQuantity() {
+        return maltsQuantity;
+    }
+
+    public ArrayList<String> getHoublonsAmerQuantity() {
+        return houblonsAmerQuantity;
+    }
+
+    public ArrayList<String> getHoublonsAromeQuantity() {
+        return houblonsAromeQuantity;
+    }
+
+    public ArrayList<String> getEpicesQuantity() {
+        return epicesQuantity;
+    }
+
+    public ArrayList<String> getLevuresQuantity() {
+        return levuresQuantity;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setBrassage(String brassage) {
+        this.brassage = brassage;
+    }
+
+    public void setSecondaire(String secondaire) {
+        this.secondaire = secondaire;
+    }
+
+    public void setGarde(String garde) {
+        this.garde = garde;
+    }
+
+    public void setEmbouteillage(String embouteillage) {
+        this.embouteillage = embouteillage;
+    }
+
+    public void setDegustation(String degustation) {
+        this.degustation = degustation;
+    }
+
+    public void setMalts(ArrayList<String> malts) {
+        this.malts = malts;
+    }
+
+    public void setHoublonsAmer(ArrayList<String> houblonsAmer) {
+        this.houblonsAmer = houblonsAmer;
+    }
+
+    public void setHoublonsArome(ArrayList<String> houblonsArome) {
+        this.houblonsArome = houblonsArome;
+    }
+
+    public void setEpices(ArrayList<String> epices) {
+        this.epices = epices;
+    }
+
+    public void setLevures(ArrayList<String> levures) {
+        this.levures = levures;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setMaltsQuantity(ArrayList<String> maltsQuantity) {
+        this.maltsQuantity = maltsQuantity;
+    }
+
+    public void setHoublonsAmerQuantity(ArrayList<String> houblonsAmerQuantity) {
+        this.houblonsAmerQuantity = houblonsAmerQuantity;
+    }
+
+    public void setHoublonsAromeQuantity(ArrayList<String> houblonsAromeQuantity) {
+        this.houblonsAromeQuantity = houblonsAromeQuantity;
+    }
+
+    public void setEpicesQuantity(ArrayList<String> epicesQuantity) {
+        this.epicesQuantity = epicesQuantity;
+    }
+
+    public void setLevuresQuantity(ArrayList<String> levuresQuantity) {
+        this.levuresQuantity = levuresQuantity;
+    }
+
+
+
+}
