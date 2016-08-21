@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import org.xmlpull.v1.XmlPullParser;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,6 +23,12 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView mListView;
     private ArrayList<Beer> beers;
+
+    public ArrayList<Beer> getBeers() {
+        return beers;
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -67,11 +74,9 @@ public class MainActivity extends AppCompatActivity {
                                     int position, long id) {
 
 
-                // Launching new Activity on selecting single List Item
-                Intent i = new Intent(getApplicationContext(), BeerActivity.class);
-                // sending data to new activity
-                i.putExtra("beer", "product");
-                startActivity(i);
+                Intent intent = new Intent(MainActivity.this.getApplicationContext(), (Class)BeerActivity.class);
+                intent.putExtra("Beer", (Serializable)MainActivity.this.beers.get(position));
+                MainActivity.this.startActivity(intent);
 
             }
         });

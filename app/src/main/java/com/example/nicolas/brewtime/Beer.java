@@ -1,15 +1,17 @@
 package com.example.nicolas.brewtime;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by nicolas on 02/01/16.
  */
-public class Beer {
+public class Beer implements Serializable{
 
     private String name;
     private String type;
     private String brassage;
+    private String quantity;
     private String secondaire;
     private String garde;
     private String embouteillage;
@@ -20,8 +22,6 @@ public class Beer {
     private ArrayList<String> houblonsArome;
     private ArrayList<String> epices;
     private ArrayList<String> levures;
-
-    private int quantity;
 
     private ArrayList<String> maltsQuantity;
     private ArrayList<String> houblonsAmerQuantity;
@@ -92,7 +92,7 @@ public class Beer {
         return levures;
     }
 
-    public int getQuantity() {
+    public String getQuantity() {
         return quantity;
     }
 
@@ -164,7 +164,7 @@ public class Beer {
         this.levures = levures;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
 

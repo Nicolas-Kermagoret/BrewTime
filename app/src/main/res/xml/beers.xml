@@ -2,7 +2,7 @@
 <beers>
     <beer>
         <beerName>beer1</beerName>
-        <type>Blonde</type>
+        <type>Rousse</type>
         <litres>20</litres>
         <dates>
             <brassage>11/11/15</brassage>
