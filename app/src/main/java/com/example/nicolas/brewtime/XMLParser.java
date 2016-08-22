@@ -78,8 +78,8 @@ public class XMLParser extends Activity {
                             currentBeer.setName(parser.nextText());
                         } else if (name.equals("type")){
                             currentBeer.setType(parser.nextText());
-                        } else if (name.equals("quantity")){
-                            currentBeer.setQuantity(Integer.parseInt(parser.nextText()));
+                        } else if (name.equals("litres")){
+                            currentBeer.setQuantity(parser.nextText());
                         } else if (name.equals("brassage")){
                             currentBeer.setBrassage(parser.nextText());
                         }else if (name.equals("secondaire")){

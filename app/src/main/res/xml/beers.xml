@@ -3,7 +3,7 @@
     <beer>
         <beerName>beer1</beerName>
         <type>Rousse</type>
-        <litres>20</litres>
+        <litres>20L</litres>
         <dates>
             <brassage>11/11/15</brassage>
             <secondaire>18/11/15</secondaire>
@@ -17,7 +17,7 @@
                 <quantity>3000</quantity>
             </malt>
             <malt>
-                <name>caramle</name>
+                <name>caramel</name>
                 <quantity>1000</quantity>
             </malt>
             <malt>
@@ -55,7 +55,7 @@
     <beer>
         <beerName>beer2</beerName>
         <type>Blanche</type>
-        <litres> 20 </litres>
+        <litres>20L</litres>
         <dates>
             <brassage>16/01/16</brassage>
             <secondaire>23/01/16</secondaire>

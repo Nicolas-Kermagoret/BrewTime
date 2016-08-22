@@ -212,7 +212,7 @@
             android:layout_marginRight="32dp"/>
 
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
@@ -231,10 +231,10 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_below="@+id/malt3"
                 android:text="Houblons amerisants"
                 android:textStyle="bold"
-                android:textSize="16sp"/>
+                android:textSize="16sp"
+                android:layout_below="@+id/malt"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -242,125 +242,172 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_below="@+id/amer1"
                 android:text="Houblons aromatiques"
                 android:textStyle="bold"
-                android:textSize="16sp"/>
+                android:textSize="16sp"
+                android:layout_below="@+id/amer"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_below="@+id/arom1"
                 android:textStyle="bold"
                 android:text="Epices"
-                android:textSize="16sp"/>
+                android:textSize="16sp"
+                android:layout_below="@+id/arome"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_below="@+id/epi2"
                 android:text="Levures"
                 android:textStyle="bold"
-                android:textSize="16sp"/>
+                android:textSize="16sp"
+                android:layout_below="@+id/epice"/>
 
-            <TextView
-                android:id="@+id/malt1"
+            <RelativeLayout
                 android:layout_width="wrap_content"
+                android:id="@+id/malt"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_alignParentRight="true"
-                android:text="pils 3kg"
-                android:textSize="16sp"/>
+                android:layout_alignParentRight="true">
 
-            <TextView
-                android:id="@+id/malt2"
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="wrap_content"
+                android:id="@+id/amer"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_below="@+id/malt1"
                 android:layout_alignParentRight="true"
-                android:text="caramel 1kg"
-                android:textSize="16sp"/>
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/malt">
 
-            <TextView
-                android:id="@+id/malt3"
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="wrap_content"
+                android:id="@+id/arome"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_below="@+id/malt2"
                 android:layout_alignParentRight="true"
-                android:text="biscuit 50 1kg"
-                android:textSize="16sp"/>
+                android:layout_below="@+id/amer">
 
-            <TextView
-                android:id="@+id/amer1"
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="wrap_content"
+                android:id="@+id/epice"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_below="@+id/malt3"
                 android:layout_alignParentRight="true"
-                android:text="zeus 12 10g"
-                android:textSize="16sp"/>
+                android:layout_below="@+id/arome">
 
-            <TextView
-                android:id="@+id/arom1"
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_below="@+id/amer1"
-                android:layout_alignParentRight="true"
-                android:text="willamette 30g"
-                android:textSize="16sp"/>
-
-            <TextView
-                android:id="@+id/epi1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_below="@+id/arom1"
-                android:layout_alignParentRight="true"
-                android:text="genievre 10g"
-                android:textSize="16sp"/>
-
-            <TextView
-                android:id="@+id/epi2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_below="@+id/epi1"
-                android:layout_alignParentRight="true"
-                android:text="ecorce orange 10g"
-                android:textSize="16sp"/>
-
-            <TextView
                 android:id="@+id/levure"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_below="@id/epi2"
                 android:layout_alignParentRight="true"
-                android:text="top 10g"
-                android:textSize="16sp"/>
+                android:layout_below="@+id/epice">
+
+            </RelativeLayout>
+            <!---->
+            <!--<TextView-->
+                <!--android:id="@+id/malt1"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="16dp"-->
+                <!--android:layout_marginLeft="16dp"-->
+                <!--android:layout_marginRight="16dp"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:text="pils 3kg"-->
+                <!--android:textSize="16sp"/>-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/malt2"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="16dp"-->
+                <!--android:layout_marginLeft="16dp"-->
+                <!--android:layout_marginRight="16dp"-->
+                <!--android:layout_below="@+id/malt1"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:text="caramel 1kg"-->
+                <!--android:textSize="16sp"/>-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/malt3"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="16dp"-->
+                <!--android:layout_marginLeft="16dp"-->
+                <!--android:layout_marginRight="16dp"-->
+                <!--android:layout_below="@+id/malt2"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:text="biscuit 50 1kg"-->
+                <!--android:textSize="16sp"/>-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/amer1"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="16dp"-->
+                <!--android:layout_marginLeft="16dp"-->
+                <!--android:layout_marginRight="16dp"-->
+                <!--android:layout_below="@+id/malt3"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:text="zeus 12 10g"-->
+                <!--android:textSize="16sp"/>-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/arom1"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="16dp"-->
+                <!--android:layout_marginLeft="16dp"-->
+                <!--android:layout_marginRight="16dp"-->
+                <!--android:layout_below="@+id/amer1"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:text="willamette 30g"-->
+                <!--android:textSize="16sp"/>-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/epi1"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="16dp"-->
+                <!--android:layout_marginLeft="16dp"-->
+                <!--android:layout_marginRight="16dp"-->
+                <!--android:layout_below="@+id/arom1"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:text="genievre 10g"-->
+                <!--android:textSize="16sp"/>-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/epi2"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="16dp"-->
+                <!--android:layout_marginLeft="16dp"-->
+                <!--android:layout_marginRight="16dp"-->
+                <!--android:layout_below="@+id/epi1"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:text="ecorce orange 10g"-->
+                <!--android:textSize="16sp"/>-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/levure"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="16dp"-->
+                <!--android:layout_marginLeft="16dp"-->
+                <!--android:layout_marginRight="16dp"-->
+                <!--android:layout_below="@id/epi2"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:text="top 10g"-->
+                <!--android:textSize="16sp"/>-->
 
 
 
