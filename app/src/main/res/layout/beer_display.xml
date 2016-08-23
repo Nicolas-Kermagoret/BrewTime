@@ -272,6 +272,9 @@
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:id="@+id/malt"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true">
 
@@ -280,6 +283,9 @@
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:id="@+id/amer"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
@@ -290,6 +296,9 @@
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:id="@+id/arome"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/amer">
@@ -299,6 +308,9 @@
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:id="@+id/epice"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/arome">
@@ -308,6 +320,9 @@
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:id="@+id/levure"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/epice">

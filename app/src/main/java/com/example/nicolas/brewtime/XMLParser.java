@@ -112,9 +112,9 @@ public class XMLParser extends Activity {
                             currentBeer.getEpicesQuantity().add(parser.nextText());
                         }else if (name.equals("levure")){
                             parser.next();
-                            currentBeer.getEpices().add(parser.nextText());
+                            currentBeer.getLevures().add(parser.nextText());
                             parser.next();
-                            currentBeer.getEpicesQuantity().add(parser.nextText());
+                            currentBeer.getLevuresQuantity().add(parser.nextText());
                         }
                     }
                     break;
