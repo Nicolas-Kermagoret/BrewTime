@@ -2,6 +2,7 @@ package com.example.nicolas.brewtime;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -85,8 +86,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        ((FloatingActionButton)this.findViewById(R.id.add_button)).setOnClickListener(new View.OnClickListener(){
 
-        //ListesActivity listActivity = new ListesActivity();
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this.getApplicationContext(), (Class)AddBeerActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
 
     }
 
