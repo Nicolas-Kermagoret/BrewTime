@@ -11,5 +11,79 @@
                                        android:layout_alignParentTop="true"
                                        android:background="@color/colorPrimaryDark"
                                        android:minHeight="?android:attr/actionBarSize" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ask_name"
+                android:hint="Nom"
+                android:inputType="text"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorTextHint"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ask_type"
+                android:hint="Type"
+                android:inputType="text"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorTextHint"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ask_quantity"
+                android:hint="Quantité en L"
+                android:inputType="text"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorTextHint"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            >
+
+            <ImageButton
+                android:id="@+id/calendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_date_range_black_48dp"
+                android:background="@color/colorBack"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+            <TextView
+                android:id="@+id/ask_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Date de brassage"
+                android:textSize="16sp"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
