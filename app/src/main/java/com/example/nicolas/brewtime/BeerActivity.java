@@ -3,6 +3,8 @@ package com.example.nicolas.brewtime;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -14,16 +16,21 @@ import java.util.ArrayList;
 /**
  * Created by nicolas on 14/01/16.
  */
-public class BeerActivity extends Activity{
+public class BeerActivity extends AppCompatActivity{
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.beer_display);
 
-        //Intent i = getIntent();
-
         Beer beer = (Beer)this.getIntent().getSerializableExtra("Beer");
+//
+//        Toolbar mActionBarToolbar = (Toolbar) findViewById(R.id.toolbar);
+//        getSupportActionBar().setTitle(beer.getName());
+//        setSupportActionBar(mActionBarToolbar);
+
+        this.setSupportActionBar((Toolbar)this.findViewById(R.id.toolbar));
+        this.getSupportActionBar().setTitle(beer.getName());
 
         TextView type = (TextView)this.findViewById(R.id.beer_type);
         TextView date = (TextView)this.findViewById(R.id.beer_date);
@@ -35,20 +42,15 @@ public class BeerActivity extends Activity{
         ImageView imageView = (ImageView)this.findViewById(R.id.beer_icon);
 
 
-        type.setText((CharSequence) beer.getType());
-        date.setText((CharSequence)beer.getBrassage());
-        quantity.setText((CharSequence)beer.getQuantity());
-        secondaire.setText((CharSequence)beer.getSecondaire());
-        garde.setText((CharSequence)beer.getGarde());
-        embouteillage.setText((CharSequence)beer.getEmbouteillage());
-        degustation.setText((CharSequence)beer.getDegustation());
+        type.setText(beer.getType());
+        date.setText(beer.getBrassage());
+        quantity.setText(beer.getQuantity());
+        secondaire.setText(beer.getSecondaire());
+        garde.setText(beer.getGarde());
+        embouteillage.setText(beer.getEmbouteillage());
+        degustation.setText(beer.getDegustation());
 
         imageView.setImageResource(this.getResources().getIdentifier("beer_icon_" + beer.getType().toLowerCase(), "drawable", this.getPackageName()));
-        new ArrayList();
-        new ArrayList();
-        new ArrayList();
-        new ArrayList();
-        new ArrayList();
         TextView[] maltText = new TextView[beer.getMalts().size()];
         TextView[] aromeText = new TextView[beer.getHoublonsArome().size()];
         TextView[] amerText = new TextView[beer.getHoublonsAmer().size()];
@@ -62,7 +64,7 @@ public class BeerActivity extends Activity{
 
         int n = 1;
         for (int i = 0; i < beer.getMalts().size(); ++i) {
-            maltText[i] = new TextView((Context)this);
+            maltText[i] = new TextView(this);
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-2, -2);
             if (beer.getMalts().size() > 1) {
                 maltText[i].setId(n);
@@ -73,12 +75,11 @@ public class BeerActivity extends Activity{
             }
             layoutParams.addRule(11);
             maltText[i].setTextSize(2, 16.0f);
-            maltText[i].setText((CharSequence)((String)beer.getMalts().get(i) + " " + (String)beer.getMaltsQuantity().get(i)+"g"));
-            malts.addView((View)maltText[i], (ViewGroup.LayoutParams)layoutParams);
+            maltText[i].setText(beer.getMalts().get(i) + " " + beer.getMaltsQuantity().get(i)+"g");
+            malts.addView(maltText[i], layoutParams);
         }
         for (int j = 0; j < beer.getHoublonsArome().size(); ++j) {
-            TextView textView9;
-            aromeText[j] =new TextView((Context)this);
+            aromeText[j] =new TextView(this);
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-2, -2);
             if (beer.getHoublonsArome().size() > 1) {
                 aromeText[j].setId(n);
@@ -89,12 +90,11 @@ public class BeerActivity extends Activity{
             }
             layoutParams.addRule(11);
             aromeText[j].setTextSize(2, 16.0f);
-            aromeText[j].setText((CharSequence)((String)beer.getHoublonsArome().get(j) + " " + (String)beer.getHoublonsAromeQuantity().get(j)+"g"));
-            arome.addView((View)aromeText[j], (ViewGroup.LayoutParams)layoutParams);
+            aromeText[j].setText(beer.getHoublonsArome().get(j) + " " + beer.getHoublonsAromeQuantity().get(j)+"g");
+            arome.addView(aromeText[j], layoutParams);
         }
         for (int i = 0; i < beer.getHoublonsAmer().size(); ++i) {
-            TextView textView10;
-            amerText[i] = new TextView((Context)this);
+            amerText[i] = new TextView(this);
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-2, -2);
             if (beer.getHoublonsAmer().size() > 1) {
                 amerText[i].setId(n);
@@ -105,12 +105,11 @@ public class BeerActivity extends Activity{
             }
             layoutParams.addRule(11);
             amerText[i].setTextSize(2, 16.0f);
-            amerText[i].setText((CharSequence)((String)beer.getHoublonsAmer().get(i) + " " + (String)beer.getHoublonsAmerQuantity().get(i)+"g"));
-            amer.addView((View)amerText[i], (ViewGroup.LayoutParams)layoutParams);
+            amerText[i].setText(beer.getHoublonsAmer().get(i) + " " + beer.getHoublonsAmerQuantity().get(i)+"g");
+            amer.addView(amerText[i], layoutParams);
         }
         for (int i = 0; i < beer.getEpices().size(); ++i) {
-            TextView textView11;
-            epiceText[i] = new TextView((Context)this);
+            epiceText[i] = new TextView(this);
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-2, -2);
             if (beer.getEpices().size() > 1) {
                 epiceText[i].setId(n);
@@ -121,12 +120,11 @@ public class BeerActivity extends Activity{
             }
             layoutParams.addRule(11);
             epiceText[i].setTextSize(2, 16.0f);
-            epiceText[i].setText((CharSequence)((String)beer.getEpices().get(i) + " " + (String)beer.getEpicesQuantity().get(i)+"g"));
-            epices.addView((View)epiceText[i], (ViewGroup.LayoutParams)layoutParams);
+            epiceText[i].setText(beer.getEpices().get(i) + " " + beer.getEpicesQuantity().get(i)+"g");
+            epices.addView(epiceText[i], layoutParams);
         }
         for (int i = 0; i < beer.getLevures().size(); ++i) {
-            TextView textView12;
-            levureText[i] = new TextView((Context)this);
+            levureText[i] = new TextView(this);
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-2, -2);
             if (beer.getLevures().size() > 1) {
                 epiceText[i].setId(n);
@@ -137,8 +135,8 @@ public class BeerActivity extends Activity{
             }
             layoutParams.addRule(11);
             levureText[i].setTextSize(2, 16.0f);
-            levureText[i].setText((CharSequence)((String)beer.getLevures().get(i) + " " + (String)beer.getLevuresQuantity().get(i)+"g"));
-            levure.addView((View)levureText[i], (ViewGroup.LayoutParams)layoutParams);
+            levureText[i].setText(beer.getLevures().get(i) + " " + beer.getLevuresQuantity().get(i)+"g");
+            levure.addView(levureText[i], layoutParams);
         }
     }
 
