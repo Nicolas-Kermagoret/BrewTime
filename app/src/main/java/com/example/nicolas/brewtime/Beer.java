@@ -2,6 +2,7 @@ package com.example.nicolas.brewtime;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * Created by nicolas on 02/01/16.
@@ -28,6 +29,8 @@ public class Beer implements Serializable{
     private ArrayList<String> houblonsAromeQuantity;
     private ArrayList<String> epicesQuantity;
     private ArrayList<String> levuresQuantity;
+
+    private Calendar calendarBrassage;
 
     public Beer(){
         this.malts = new ArrayList<String>();
@@ -186,6 +189,14 @@ public class Beer implements Serializable{
 
     public void setLevuresQuantity(ArrayList<String> levuresQuantity) {
         this.levuresQuantity = levuresQuantity;
+    }
+
+    public Calendar getCalendarBrassage() {
+        return calendarBrassage;
+    }
+
+    public void setCalendarBrassage(Calendar calendarBrassage) {
+        this.calendarBrassage = calendarBrassage;
     }
 
 

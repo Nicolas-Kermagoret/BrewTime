@@ -10,7 +10,9 @@
                                        android:layout_height="wrap_content"
                                        android:layout_alignParentTop="true"
                                        android:background="@color/colorPrimaryDark"
-                                       android:minHeight="?android:attr/actionBarSize" />
+                                       android:minHeight="?android:attr/actionBarSize"
+        />
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -75,12 +77,24 @@
             android:layout_margin="8dp">
 
             <TextView
-                android:id="@+id/ask_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="Date de brassage"
                 android:textSize="16sp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/ask_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="24sp"/>
 
         </RelativeLayout>
 
