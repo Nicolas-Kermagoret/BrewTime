@@ -31,6 +31,10 @@
             android:name=".AddBeerActivity2"
             />
 
+        <activity
+            android:name=".AddBeerActivity3"
+            />
+
     </application>
 
 </manifest>

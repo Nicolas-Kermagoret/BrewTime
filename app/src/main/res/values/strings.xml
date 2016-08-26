@@ -1,3 +1,40 @@
 <resources>
-    <string name="app_name">Brew Time</string>
+    <string name="app_name">Brew Time 2</string>
+
+    <string-array name="fermentation_primaire">
+
+        <item>5 jours</item>
+        <item>6 jours</item>
+        <item>7 jours</item>
+        <item>8 jours</item>
+
+        </string-array>
+
+    <string-array name="fermentation_secondaire">
+
+        <item>1 semaines</item>
+        <item>2 semaines</item>
+        <item>3 semaines</item>
+        <item>4 semaines</item>
+
+    </string-array>
+
+    <string-array name="garde">
+
+        <item>5 jours</item>
+        <item>6 jours</item>
+        <item>7 jours</item>
+        <item>8 jours</item>
+
+    </string-array>
+
+    <string-array name="refermentation">
+
+        <item>1 semaines</item>
+        <item>2 semaines</item>
+        <item>3 semaines</item>
+        <item>4 semaines</item>
+
+    </string-array>
+
 </resources>

@@ -14,6 +14,10 @@
         <item name="android:background">@color/colorPrimaryDark</item>
     </style>
 
+    <style name="Spinner" parent="Widget.AppCompat.Spinner">
+        <item name="backgroundTint">@color/colorText</item>
+    </style>
+
 
 
 </resources>
