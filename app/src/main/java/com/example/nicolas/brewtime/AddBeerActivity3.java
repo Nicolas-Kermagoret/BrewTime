@@ -27,4 +27,6 @@ public class AddBeerActivity3 extends AppCompatActivity {
         this.getMenuInflater().inflate(R.menu.validation_bar, menu);
         return true;
     }
+
+
 }
