@@ -74,6 +74,8 @@ public class AddBeerActivity3 extends AppCompatActivity{
                 LayoutInflater inflater = activity.getLayoutInflater();
 
                 final View dialogView = inflater.inflate(R.layout.add_ingredient, null);
+                TextView textAddIngredient =(TextView)dialogView.findViewById(R.id.title_add_ingredient);
+                textAddIngredient.setText("Ajouter Malt");
                 //textPopUp.setText("Malt");
 
                 // Inflate and set the layout for the dialog
@@ -85,7 +87,7 @@ public class AddBeerActivity3 extends AppCompatActivity{
                             public void onClick(DialogInterface dialog, int id) {
                                 EditText name = (EditText)dialogView.findViewById(R.id.ingredient_name);
                                 EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
-                                Ingredient ingredient = new Ingredient(name.getText().toString(), "malt", Integer.parseInt(quantity.getText().toString()));
+                                Ingredient ingredient = new Ingredient(name.getText().toString(), "Malt", Integer.parseInt(quantity.getText().toString()));
                                 ingredients.add(ingredient);
                                 inflateIngredient(ingredient);
                                 Log.d("TEST", "Add ingredient");
@@ -117,6 +119,8 @@ public class AddBeerActivity3 extends AppCompatActivity{
                 LayoutInflater inflater = activity.getLayoutInflater();
 
                 final View dialogView = inflater.inflate(R.layout.add_ingredient, null);
+                TextView textAddIngredient =(TextView)dialogView.findViewById(R.id.title_add_ingredient);
+                textAddIngredient.setText("Ajouter Houblon Amerisant");
                 //textPopUp.setText("Malt");
 
                 // Inflate and set the layout for the dialog
@@ -128,7 +132,7 @@ public class AddBeerActivity3 extends AppCompatActivity{
                             public void onClick(DialogInterface dialog, int id) {
                                 EditText name = (EditText)dialogView.findViewById(R.id.ingredient_name);
                                 EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
-                                Ingredient ingredient = new Ingredient(name.getText().toString(), "amer", Integer.parseInt(quantity.getText().toString()));
+                                Ingredient ingredient = new Ingredient(name.getText().toString(), "Houblon Amerisant", Integer.parseInt(quantity.getText().toString()));
                                 ingredients.add(ingredient);
                                 inflateIngredient(ingredient);
                                 Log.d("TEST", "Add ingredient");
@@ -156,6 +160,8 @@ public class AddBeerActivity3 extends AppCompatActivity{
                 LayoutInflater inflater = activity.getLayoutInflater();
 
                 final View dialogView = inflater.inflate(R.layout.add_ingredient, null);
+                TextView textAddIngredient =(TextView)dialogView.findViewById(R.id.title_add_ingredient);
+                textAddIngredient.setText("Ajouter Houblon Aromatisant");
                 //textPopUp.setText("Malt");
 
                 // Inflate and set the layout for the dialog
@@ -167,7 +173,7 @@ public class AddBeerActivity3 extends AppCompatActivity{
                             public void onClick(DialogInterface dialog, int id) {
                                 EditText name = (EditText)dialogView.findViewById(R.id.ingredient_name);
                                 EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
-                                Ingredient ingredient = new Ingredient(name.getText().toString(), "arome", Integer.parseInt(quantity.getText().toString()));
+                                Ingredient ingredient = new Ingredient(name.getText().toString(), "Houblon Aromatisant", Integer.parseInt(quantity.getText().toString()));
 
                                 inflateIngredient(ingredient);
                                 Log.d("TEST", "Add ingredient");
@@ -195,6 +201,8 @@ public class AddBeerActivity3 extends AppCompatActivity{
                 LayoutInflater inflater = activity.getLayoutInflater();
 
                 final View dialogView = inflater.inflate(R.layout.add_ingredient, null);
+                TextView textAddIngredient =(TextView)dialogView.findViewById(R.id.title_add_ingredient);
+                textAddIngredient.setText("Ajouter Epice");
                 //textPopUp.setText("Malt");
 
                 // Inflate and set the layout for the dialog
@@ -206,7 +214,7 @@ public class AddBeerActivity3 extends AppCompatActivity{
                             public void onClick(DialogInterface dialog, int id) {
                                 EditText name = (EditText)dialogView.findViewById(R.id.ingredient_name);
                                 EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
-                                Ingredient ingredient = new Ingredient(name.getText().toString(), "epice", Integer.parseInt(quantity.getText().toString()));
+                                Ingredient ingredient = new Ingredient(name.getText().toString(), "Epice", Integer.parseInt(quantity.getText().toString()));
                                 ingredients.add(ingredient);
                                 inflateIngredient(ingredient);
                                 Log.d("TEST", "Add ingredient");
@@ -234,6 +242,8 @@ public class AddBeerActivity3 extends AppCompatActivity{
 
                 //textPopUp.setText("Malt");
                 final View dialogView = inflater.inflate(R.layout.add_ingredient, null);
+                TextView textAddIngredient =(TextView)dialogView.findViewById(R.id.title_add_ingredient);
+                textAddIngredient.setText("Ajouter Levure");
 
                 // Inflate and set the layout for the dialog
                 // Pass null as the parent view because its going in the dialog layout
@@ -245,7 +255,7 @@ public class AddBeerActivity3 extends AppCompatActivity{
                                 // sign in the user ...
                                 EditText name = (EditText)dialogView.findViewById(R.id.ingredient_name);
                                 EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
-                                Ingredient ingredient = new Ingredient(name.getText().toString(), "levure", Integer.parseInt(quantity.getText().toString()));
+                                Ingredient ingredient = new Ingredient(name.getText().toString(), "Levure", Integer.parseInt(quantity.getText().toString()));
                                 ingredients.add(ingredient);
                                 inflateIngredient(ingredient);
 
@@ -279,7 +289,7 @@ public class AddBeerActivity3 extends AppCompatActivity{
         TextView type = (TextView)ingredient.findViewById(R.id.list_ingredient_type);
         type.setText(ingredientToAdd.getType());
         TextView quantity = (TextView)ingredient.findViewById(R.id.list_ingredient_quantity);
-        quantity.setText(String.valueOf(ingredientToAdd.getQuantity()));
+        quantity.setText(String.valueOf(ingredientToAdd.getQuantity())+" g");
 
         layout.addView(ingredient);
 

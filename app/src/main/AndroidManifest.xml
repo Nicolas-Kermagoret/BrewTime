@@ -25,18 +25,22 @@
 
         <activity
             android:name=".BeerActivity"
+            android:screenOrientation="portrait"
              />
 
         <activity
             android:name=".AddBeerActivity"
+            android:screenOrientation="portrait"
                   />
 
         <activity
             android:name=".AddBeerActivity2"
+            android:screenOrientation="portrait"
             />
 
         <activity
             android:name=".AddBeerActivity3"
+            android:screenOrientation="portrait"
             />
 
         <meta-data

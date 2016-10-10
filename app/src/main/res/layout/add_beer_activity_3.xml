@@ -14,16 +14,23 @@
                                        android:minHeight="?android:attr/actionBarSize"
         />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/list_ingredients"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/toolbar"
         android:layout_alignParentLeft="true"
-        android:orientation="vertical"
-        >
+        android:layout_margin="8dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/list_ingredients"
+            android:orientation="vertical"
+            >
 
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/add_ingredient"
