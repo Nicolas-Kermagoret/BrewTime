@@ -21,6 +21,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -30,6 +31,7 @@ import android.widget.PopupWindow;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -295,5 +297,40 @@ public class AddBeerActivity3 extends AppCompatActivity{
 
     }
 
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        if (menuItem.getItemId() == R.id.bar_done) {
+
+            this.setIngredients();
+
+            Intent intent = new Intent(this.getApplicationContext(), (Class)BeerActivity.class);
+            intent.putExtra("Beer", (Serializable)this.beer);
+            this.startActivity(intent);
+        }
+        return true;
+    }
+
+    public void setIngredients(){
+        for (int i=0; i<this.ingredients.size(); i++){
+            if(ingredients.get(i).getType()=="Malt"){
+                this.beer.addMalt(ingredients.get(i));
+            }
+
+            else if(ingredients.get(i).getType()=="Houblon Amerisant"){
+                this.beer.addHoublonAmer(ingredients.get(i));
+            }
+
+            else if(ingredients.get(i).getType()=="Houblon Aromatisant"){
+                this.beer.addHoublonArome(ingredients.get(i));
+            }
+
+            else if(ingredients.get(i).getType()=="Epice"){
+                this.beer.addEpice(ingredients.get(i));
+            }
+
+            else if(ingredients.get(i).getType()=="Levure"){
+                this.beer.addLevure(ingredients.get(i));
+            }
+        }
+    }
 
 }

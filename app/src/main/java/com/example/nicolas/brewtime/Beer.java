@@ -147,49 +147,36 @@ public class Beer implements Serializable{
         this.degustation = degustation;
     }
 
-    public void setMalts(ArrayList<String> malts) {
-        this.malts = malts;
+    public void addMalt(Ingredient malt) {
+        this.malts.add(malt.getName());
+        this.maltsQuantity.add(String.valueOf(malt.getQuantity()));
     }
 
-    public void setHoublonsAmer(ArrayList<String> houblonsAmer) {
-        this.houblonsAmer = houblonsAmer;
+    public void addHoublonAmer(Ingredient amer) {
+        this.houblonsAmer.add(amer.getName());
+        this.houblonsAmerQuantity.add(String.valueOf(amer.getQuantity()));
     }
 
-    public void setHoublonsArome(ArrayList<String> houblonsArome) {
-        this.houblonsArome = houblonsArome;
+    public void addHoublonArome(Ingredient arome) {
+        this.houblonsArome.add(arome.getName());
+        this.houblonsAromeQuantity.add(String.valueOf(arome.getQuantity()));
     }
 
-    public void setEpices(ArrayList<String> epices) {
-        this.epices = epices;
+    public void addEpice(Ingredient epice) {
+        this.epices.add(epice.getName());
+        this.epicesQuantity.add(String.valueOf(epice.getQuantity()));
     }
 
-    public void setLevures(ArrayList<String> levures) {
-        this.levures = levures;
+    public void addLevure(Ingredient levure) {
+        this.levures.add(levure.getName());
+        this.levuresQuantity.add(String.valueOf(levure.getQuantity()));
     }
 
     public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
 
-    public void setMaltsQuantity(ArrayList<String> maltsQuantity) {
-        this.maltsQuantity = maltsQuantity;
-    }
 
-    public void setHoublonsAmerQuantity(ArrayList<String> houblonsAmerQuantity) {
-        this.houblonsAmerQuantity = houblonsAmerQuantity;
-    }
-
-    public void setHoublonsAromeQuantity(ArrayList<String> houblonsAromeQuantity) {
-        this.houblonsAromeQuantity = houblonsAromeQuantity;
-    }
-
-    public void setEpicesQuantity(ArrayList<String> epicesQuantity) {
-        this.epicesQuantity = epicesQuantity;
-    }
-
-    public void setLevuresQuantity(ArrayList<String> levuresQuantity) {
-        this.levuresQuantity = levuresQuantity;
-    }
 
     public Calendar getCalendarBrassage() {
         return calendarBrassage;
