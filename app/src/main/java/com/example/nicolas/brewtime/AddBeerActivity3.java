@@ -130,6 +130,7 @@ public class AddBeerActivity3 extends AppCompatActivity{
                                 EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
                                 Ingredient ingredient = new Ingredient(name.getText().toString(), "amer", Integer.parseInt(quantity.getText().toString()));
                                 ingredients.add(ingredient);
+                                inflateIngredient(ingredient);
                                 Log.d("TEST", "Add ingredient");
                             }
                         })
@@ -167,7 +168,8 @@ public class AddBeerActivity3 extends AppCompatActivity{
                                 EditText name = (EditText)dialogView.findViewById(R.id.ingredient_name);
                                 EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
                                 Ingredient ingredient = new Ingredient(name.getText().toString(), "arome", Integer.parseInt(quantity.getText().toString()));
-                                ingredients.add(ingredient);
+
+                                inflateIngredient(ingredient);
                                 Log.d("TEST", "Add ingredient");
                             }
                         })
@@ -206,6 +208,7 @@ public class AddBeerActivity3 extends AppCompatActivity{
                                 EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
                                 Ingredient ingredient = new Ingredient(name.getText().toString(), "epice", Integer.parseInt(quantity.getText().toString()));
                                 ingredients.add(ingredient);
+                                inflateIngredient(ingredient);
                                 Log.d("TEST", "Add ingredient");
                             }
                         })
@@ -244,6 +247,7 @@ public class AddBeerActivity3 extends AppCompatActivity{
                                 EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
                                 Ingredient ingredient = new Ingredient(name.getText().toString(), "levure", Integer.parseInt(quantity.getText().toString()));
                                 ingredients.add(ingredient);
+                                inflateIngredient(ingredient);
 
                             }
                         })
