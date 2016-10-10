@@ -8,8 +8,8 @@
         <option name="gradleHome" value="$APPLICATION_HOME_DIR$/gradle/gradle-2.14.1" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
+            <option value="/run/media/nicolas/DATA_Manjaro/Documents/cours/S9/CAI/BrewTime" />
+            <option value="/run/media/nicolas/DATA_Manjaro/Documents/cours/S9/CAI/BrewTime/app" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

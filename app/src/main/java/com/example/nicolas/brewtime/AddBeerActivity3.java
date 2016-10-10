@@ -30,12 +30,15 @@ import android.widget.PopupWindow;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 /**
  * Created by nicolas on 26/08/16.
  */
 public class AddBeerActivity3 extends AppCompatActivity {
 
     Beer beer;
+    ArrayList<Ingredient> ingredients;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,8 @@ public class AddBeerActivity3 extends AppCompatActivity {
         setContentView(R.layout.add_beer_activity_3);
         final Context context = this.getApplicationContext();
         final LinearLayout layoutPopUp = new LinearLayout(this);
+
+        this.ingredients = new ArrayList<Ingredient>();
 
         DialogFragment fragment;
 
@@ -79,6 +84,8 @@ public class AddBeerActivity3 extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int id) {
                                 // sign in the user ...
                                 Log.d("TEST", "Add ingredient");
+                                Ingredient ingredient = new Ingredient("pils", "malt", 1000);
+                                ingredients.add(ingredient);
                             }
                         })
                         .setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
