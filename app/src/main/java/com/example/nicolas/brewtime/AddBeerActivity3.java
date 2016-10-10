@@ -87,6 +87,7 @@ public class AddBeerActivity3 extends AppCompatActivity{
                                 EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
                                 Ingredient ingredient = new Ingredient(name.getText().toString(), "malt", Integer.parseInt(quantity.getText().toString()));
                                 ingredients.add(ingredient);
+                                inflateIngredient(ingredient);
                                 Log.d("TEST", "Add ingredient");
                             }
                         })
@@ -262,6 +263,22 @@ public class AddBeerActivity3 extends AppCompatActivity{
     public boolean onCreateOptionsMenu(Menu menu) {
         this.getMenuInflater().inflate(R.menu.validation_bar, menu);
         return true;
+    }
+
+    public void inflateIngredient(Ingredient ingredientToAdd){
+        LinearLayout layout = (LinearLayout)findViewById(R.id.list_ingredients);
+
+        View ingredient = getLayoutInflater().inflate(R.layout.list_ingredient, null);
+
+        TextView name = (TextView)ingredient.findViewById(R.id.list_ingredient_name);
+        name.setText(ingredientToAdd.getName());
+        TextView type = (TextView)ingredient.findViewById(R.id.list_ingredient_type);
+        type.setText(ingredientToAdd.getType());
+        TextView quantity = (TextView)ingredient.findViewById(R.id.list_ingredient_quantity);
+        quantity.setText(String.valueOf(ingredientToAdd.getQuantity()));
+
+        layout.addView(ingredient);
+
     }
 
 
