@@ -29,6 +29,7 @@
         android:hint="Quantité (g)"
         android:layout_margin="16dp"
         android:textColor="@color/colorText"
-        android:textColorHint="@color/colorTextHint"/>
+        android:textColorHint="@color/colorTextHint"
+        android:inputType="numberDecimal"/>
 
 </LinearLayout>

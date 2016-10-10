@@ -35,7 +35,7 @@ import java.util.ArrayList;
 /**
  * Created by nicolas on 26/08/16.
  */
-public class AddBeerActivity3 extends AppCompatActivity {
+public class AddBeerActivity3 extends AppCompatActivity{
 
     Beer beer;
     ArrayList<Ingredient> ingredients;
@@ -73,19 +73,21 @@ public class AddBeerActivity3 extends AppCompatActivity {
                 // Get the layout inflater
                 LayoutInflater inflater = activity.getLayoutInflater();
 
+                final View dialogView = inflater.inflate(R.layout.add_ingredient, null);
                 //textPopUp.setText("Malt");
 
                 // Inflate and set the layout for the dialog
                 // Pass null as the parent view because its going in the dialog layout
-                builder.setView(inflater.inflate(R.layout.add_ingredient, null))
+                builder.setView(dialogView)
                         // Add action buttons
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
-                                // sign in the user ...
-                                Log.d("TEST", "Add ingredient");
-                                Ingredient ingredient = new Ingredient("pils", "malt", 1000);
+                                EditText name = (EditText)dialogView.findViewById(R.id.ingredient_name);
+                                EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
+                                Ingredient ingredient = new Ingredient(name.getText().toString(), "malt", Integer.parseInt(quantity.getText().toString()));
                                 ingredients.add(ingredient);
+                                Log.d("TEST", "Add ingredient");
                             }
                         })
                         .setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
@@ -113,16 +115,20 @@ public class AddBeerActivity3 extends AppCompatActivity {
                 // Get the layout inflater
                 LayoutInflater inflater = activity.getLayoutInflater();
 
+                final View dialogView = inflater.inflate(R.layout.add_ingredient, null);
                 //textPopUp.setText("Malt");
 
                 // Inflate and set the layout for the dialog
                 // Pass null as the parent view because its going in the dialog layout
-                builder.setView(inflater.inflate(R.layout.add_ingredient, null))
+                builder.setView(dialogView)
                         // Add action buttons
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
-                                // sign in the user ...
+                                EditText name = (EditText)dialogView.findViewById(R.id.ingredient_name);
+                                EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
+                                Ingredient ingredient = new Ingredient(name.getText().toString(), "amer", Integer.parseInt(quantity.getText().toString()));
+                                ingredients.add(ingredient);
                                 Log.d("TEST", "Add ingredient");
                             }
                         })
@@ -147,16 +153,20 @@ public class AddBeerActivity3 extends AppCompatActivity {
                 // Get the layout inflater
                 LayoutInflater inflater = activity.getLayoutInflater();
 
+                final View dialogView = inflater.inflate(R.layout.add_ingredient, null);
                 //textPopUp.setText("Malt");
 
                 // Inflate and set the layout for the dialog
                 // Pass null as the parent view because its going in the dialog layout
-                builder.setView(inflater.inflate(R.layout.add_ingredient, null))
+                builder.setView(dialogView)
                         // Add action buttons
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
-                                // sign in the user ...
+                                EditText name = (EditText)dialogView.findViewById(R.id.ingredient_name);
+                                EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
+                                Ingredient ingredient = new Ingredient(name.getText().toString(), "arome", Integer.parseInt(quantity.getText().toString()));
+                                ingredients.add(ingredient);
                                 Log.d("TEST", "Add ingredient");
                             }
                         })
@@ -181,16 +191,20 @@ public class AddBeerActivity3 extends AppCompatActivity {
                 // Get the layout inflater
                 LayoutInflater inflater = activity.getLayoutInflater();
 
+                final View dialogView = inflater.inflate(R.layout.add_ingredient, null);
                 //textPopUp.setText("Malt");
 
                 // Inflate and set the layout for the dialog
                 // Pass null as the parent view because its going in the dialog layout
-                builder.setView(inflater.inflate(R.layout.add_ingredient, null))
+                builder.setView(dialogView)
                         // Add action buttons
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
-                                // sign in the user ...
+                                EditText name = (EditText)dialogView.findViewById(R.id.ingredient_name);
+                                EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
+                                Ingredient ingredient = new Ingredient(name.getText().toString(), "epice", Integer.parseInt(quantity.getText().toString()));
+                                ingredients.add(ingredient);
                                 Log.d("TEST", "Add ingredient");
                             }
                         })
@@ -215,16 +229,21 @@ public class AddBeerActivity3 extends AppCompatActivity {
                 LayoutInflater inflater = activity.getLayoutInflater();
 
                 //textPopUp.setText("Malt");
+                final View dialogView = inflater.inflate(R.layout.add_ingredient, null);
 
                 // Inflate and set the layout for the dialog
                 // Pass null as the parent view because its going in the dialog layout
-                builder.setView(inflater.inflate(R.layout.add_ingredient, null))
+                builder.setView(dialogView)
                         // Add action buttons
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
                                 // sign in the user ...
-                                Log.d("TEST", "Add ingredient");
+                                EditText name = (EditText)dialogView.findViewById(R.id.ingredient_name);
+                                EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
+                                Ingredient ingredient = new Ingredient(name.getText().toString(), "levure", Integer.parseInt(quantity.getText().toString()));
+                                ingredients.add(ingredient);
+
                             }
                         })
                         .setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
