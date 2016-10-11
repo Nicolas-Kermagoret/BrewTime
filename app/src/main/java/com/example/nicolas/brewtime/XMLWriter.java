@@ -36,14 +36,36 @@ public class XMLWriter {
                 Element new_beer_name = doc.createElement("beerName");
                 Element new_beer_type = doc.createElement("type");
                 Element new_beer_litres =doc.createElement("litres");
+                Element new_beer_dates =doc.createElement("dates");
+                Element new_beer_ingredients = doc.createElement("ingredients");
+
+                Element date_brassage = doc.createElement("brassage");
+                Element date_secondaire = doc.createElement("secondaire");
+                Element date_garde = doc.createElement("garde");
+                Element date_embouteillage = doc.createElement("embouteillage");
+                Element date_degustation = doc.createElement("degustation");
 
                 new_beer_name.setTextContent(beer.getName());
                 new_beer_type.setTextContent(beer.getType());
                 new_beer_litres.setTextContent(beer.getType());
 
+                date_brassage.setTextContent(beer.getBrassage());
+                date_secondaire.setTextContent(beer.getSecondaire());
+                date_garde.setTextContent(beer.getGarde());
+                date_embouteillage.setTextContent(beer.getEmbouteillage());
+                date_degustation.setTextContent(beer.getDegustation());
+
+                new_beer_dates.appendChild(date_brassage);
+                new_beer_dates.appendChild(date_secondaire);
+                new_beer_dates.appendChild(date_garde);
+                new_beer_dates.appendChild(date_embouteillage);
+                new_beer_dates.appendChild(date_degustation);
+
                 new_beer.appendChild(new_beer_name);
                 new_beer.appendChild(new_beer_type);
                 new_beer.appendChild(new_beer_litres);
+                new_beer.appendChild(new_beer_dates);
+                new_beer.appendChild(new_beer_ingredients);
 
                 mainRootElement.appendChild(new_beer);
                 //mainRootElement.appendChild("beer");
