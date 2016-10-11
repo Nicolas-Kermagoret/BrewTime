@@ -5,8 +5,12 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -29,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     public ArrayList<Beer> getBeers() {
         return beers;
     }
+    private XMLWriter xml = new XMLWriter();
 
 
 
@@ -102,6 +107,17 @@ public class MainActivity extends AppCompatActivity {
         private ImageView personImageView;
     }
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.getMenuInflater().inflate(R.menu.validation_bar, menu);
+        return true;
+    }
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        if (menuItem.getItemId() == R.id.bar_done) {
+            Log.d("test","test");
+            xml.writeXMLToFile(getBeers());
+        }
+        return true;
+    }
 }
 
 
