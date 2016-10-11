@@ -3,6 +3,14 @@ package com.example.nicolas.brewtime;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.DocumentBuilder;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Node;
+import org.w3c.dom.Element;
+import java.io.File;
+
 
 /**
  * Created by nicolas on 02/01/16.
@@ -185,7 +193,4 @@ public class Beer implements Serializable{
     public void setCalendarBrassage(Calendar calendarBrassage) {
         this.calendarBrassage = calendarBrassage;
     }
-
-
-
 }
