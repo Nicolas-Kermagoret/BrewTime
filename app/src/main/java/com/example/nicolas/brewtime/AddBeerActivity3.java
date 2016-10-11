@@ -302,7 +302,7 @@ public class AddBeerActivity3 extends AppCompatActivity{
 
             this.setIngredients();
 
-            Intent intent = new Intent(this.getApplicationContext(), (Class)BeerActivity.class);
+            Intent intent = new Intent(this.getApplicationContext(), (Class)ValidateBeer.class);
             intent.putExtra("Beer", (Serializable)this.beer);
             this.startActivity(intent);
         }
