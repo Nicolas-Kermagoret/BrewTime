@@ -53,6 +53,9 @@ public class XMLParser extends Activity {
 
     }
 
+
+
+
     private void parseXML(XmlPullParser parser) throws XmlPullParserException,IOException
     {
         Log.d("DEBUG", "in parseXML");
