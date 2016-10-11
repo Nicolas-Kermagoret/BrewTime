@@ -2,15 +2,26 @@ package com.example.nicolas.brewtime;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -18,12 +29,14 @@ import java.util.ArrayList;
  */
 public class BeerActivity extends AppCompatActivity{
 
+    Beer beer;
+
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.beer_display);
 
-        Beer beer = (Beer)this.getIntent().getSerializableExtra("Beer");
+        this.beer = (Beer)this.getIntent().getSerializableExtra("Beer");
 //
 //        Toolbar mActionBarToolbar = (Toolbar) findViewById(R.id.toolbar);
 //        getSupportActionBar().setTitle(beer.getName());
@@ -138,6 +151,65 @@ public class BeerActivity extends AppCompatActivity{
             levureText[i].setText(beer.getLevures().get(i) + " " + beer.getLevuresQuantity().get(i)+"g");
             levure.addView(levureText[i], layoutParams);
         }
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.getMenuInflater().inflate(R.menu.send_by_email, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        if (menuItem.getItemId() == R.id.email_done) {
+
+            String beerName = "Nom , " +beer.getName() +"\n";
+            String beerType = "Type , " + beer.getType()+"\n";
+            String beerBrassageDate = "Brassage , " + beer.getBrassage()+"\n";
+            String beerSecondaireDate = "Fermentation secondaire , " + beer.getSecondaire()+"\n";
+            String beerGardeDate = "Garde , " + beer.getGarde()+"\n";
+            String beerEmbouteillageDate = "Embouteillage , " + beer.getEmbouteillage()+"\n";
+            String beerDegustationDate = "Degustation , " + beer.getDegustation()+"\n";
+            String beerIngredients = "Ingredient, Nom, Quantity"+"\n";
+
+            String beerToWrite = beerName + beerType + beerBrassageDate + beerSecondaireDate + beerGardeDate + beerEmbouteillageDate + beerDegustationDate + beerIngredients;
+
+            File file   = null;
+            File root   = Environment.getExternalStorageDirectory();
+            Log.d("Test", "Does root can write ?");
+            if (root.canWrite()){
+                Log.d("Test", "Root can write");
+                File dir    =   new File (root.getAbsolutePath() + "/PersonData");
+                dir.mkdirs();
+                file   =   new File(dir, "Data.csv");
+                FileOutputStream out   =   null;
+                try {
+                    out = new FileOutputStream(file);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    out.write(beerToWrite.getBytes());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+
+                Uri u1 = Uri.fromFile(file);
+
+                Intent sendIntent = new Intent(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Brassage biere");
+                sendIntent.putExtra(Intent.EXTRA_STREAM, u1);
+                sendIntent.setType("text/html");
+                startActivity(sendIntent);
+            }
+
+        }
+        return true;
     }
 
 

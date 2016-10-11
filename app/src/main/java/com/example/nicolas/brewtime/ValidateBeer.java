@@ -173,11 +173,10 @@ public class ValidateBeer extends AppCompatActivity {
         if (menuItem.getItemId() == R.id.bar_done) {
 
 
-            //addToCalendar();
-            exportCSV();
-//            Intent intent = new Intent(this.getApplicationContext(), (Class)ValidateBeer.class);
-//            intent.putExtra("Beer", (Serializable)this.beer);
-//            this.startActivity(intent);
+            addToCalendar();
+
+            Intent intent = new Intent(this.getApplicationContext(), (Class)MainActivity.class);
+            this.startActivity(intent);
         }
         return true;
     }
@@ -240,54 +239,7 @@ public class ValidateBeer extends AppCompatActivity {
 
     }
 
-    public void exportCSV(){
-        String beerName = "Nom , " +beer.getName() +"\n";
-        String beerType = "Type , " + beer.getType()+"\n";
-        String beerBrassageDate = "Brassage , " + beer.getBrassage()+"\n";
-        String beerSecondaireDate = "Fermentation secondaire , " + beer.getSecondaire()+"\n";
-        String beerGardeDate = "Garde , " + beer.getGarde()+"\n";
-        String beerEmbouteillageDate = "Embouteillage , " + beer.getEmbouteillage()+"\n";
-        String beerDegustationDate = "Degustation , " + beer.getDegustation()+"\n";
-        String beerIngredients = "Ingredient, Nom, Quantity"+"\n";
 
-        String beerToWrite = beerName + beerType + beerBrassageDate + beerSecondaireDate + beerGardeDate + beerEmbouteillageDate + beerDegustationDate + beerIngredients;
-
-        File file   = null;
-        File root   = Environment.getExternalStorageDirectory();
-        Log.d("Test", "Does root can write ?");
-        if (root.canWrite()){
-            Log.d("Test", "Root can write");
-            File dir    =   new File (root.getAbsolutePath() + "/PersonData");
-            dir.mkdirs();
-            file   =   new File(dir, "Data.csv");
-            FileOutputStream out   =   null;
-            try {
-                out = new FileOutputStream(file);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            try {
-                out.write(beerToWrite.getBytes());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                out.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-
-
-            Uri u1 = Uri.fromFile(file);
-
-            Intent sendIntent = new Intent(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Brassage biere");
-            sendIntent.putExtra(Intent.EXTRA_STREAM, u1);
-            sendIntent.setType("text/html");
-            startActivity(sendIntent);
-        }
-    }
 
 
 
