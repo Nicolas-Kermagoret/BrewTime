@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.CalendarContract;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +25,10 @@ import com.google.api.client.util.DateTime;
 import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.EventDateTime;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Calendar;
 
@@ -169,9 +174,9 @@ public class ValidateBeer extends AppCompatActivity {
 
 
             addToCalendar();
-//            Intent intent = new Intent(this.getApplicationContext(), (Class)ValidateBeer.class);
-//            intent.putExtra("Beer", (Serializable)this.beer);
-//            this.startActivity(intent);
+
+            Intent intent = new Intent(this.getApplicationContext(), (Class)MainActivity.class);
+            this.startActivity(intent);
         }
         return true;
     }
@@ -233,6 +238,12 @@ public class ValidateBeer extends AppCompatActivity {
 
 
     }
+
+
+
+
+
+
 
 
 
