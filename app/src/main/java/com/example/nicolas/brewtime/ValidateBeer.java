@@ -232,6 +232,7 @@ public class ValidateBeer extends AppCompatActivity {
         }
 
         Uri uri = cr.insert(CalendarContract.Events.CONTENT_URI, values);
+        Log.d("adding beer", "done");
 
 // get the event ID that is the last element in the Uri
 //        long eventID = Long.parseLong(uri.getLastPathSegment());
