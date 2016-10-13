@@ -29,4 +29,30 @@ public class Ingredient implements Serializable {
     public String getType() {
         return type;
     }
+
+    public String getCleanType(){
+        String cleanType ;
+        switch (type){
+            case "houblonAm":
+                cleanType = "Houblon Amérisant";
+                break;
+            case "malt":
+                cleanType="Malt";
+                break;
+            case "levure":
+                cleanType="Levure";
+                break;
+            case "epice":
+                cleanType="Epice";
+                break;
+            case "houblonAr":
+                cleanType="Houblon Aromatisant";
+                break;
+            default:
+                cleanType="Erreur";
+                break;
+        }
+        return cleanType;
+
+    }
 }

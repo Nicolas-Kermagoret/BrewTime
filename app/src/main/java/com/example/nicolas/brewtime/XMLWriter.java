@@ -65,20 +65,24 @@ public class XMLWriter {
             new_beer.appendChild(new_beer_type);
             new_beer.appendChild(new_beer_litres);
             new_beer.appendChild(new_beer_dates);
-            new_beer.appendChild(new_beer_ingredients);
 
+            for(Ingredient ing : beer.getIngredients()){
+                Element new_ing = doc.createElement(ing.getType());
+                Element new_ing_name = doc.createElement("name");
+                Element new_ing_quantity = doc.createElement("quantity");
+
+                new_ing_name.setTextContent(ing.getName());
+                new_ing_quantity.setTextContent(Integer.toString(ing.getQuantity()));
+                new_ing.appendChild(new_ing_name);
+                new_ing.appendChild(new_ing_quantity);
+
+                new_beer_ingredients.appendChild(new_ing);
+            }
+
+            new_beer.appendChild(new_beer_ingredients);
             mainRootElement.appendChild(new_beer);
-            //mainRootElement.appendChild("beer");
             Log.d("Ajout  de la bière : ", beer.getName());
 
-
-            // append child elements to root element
-            /*
-            mainRootElement.appendChild(getCompany(doc, "1", "Paypal", "Payment", "1000"));
-            mainRootElement.appendChild(getCompany(doc, "2", "eBay", "Shopping", "2000"));
-            mainRootElement.appendChild(getCompany(doc, "3", "Google", "Search", "3000"));
-            */
-            // output DOM XML to console
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             DOMSource source = new DOMSource(doc);

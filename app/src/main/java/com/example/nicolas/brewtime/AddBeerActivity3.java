@@ -90,7 +90,7 @@ public class AddBeerActivity3 extends AppCompatActivity{
                                 EditText name = (EditText)dialogView.findViewById(R.id.ingredient_name);
                                 EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
                                 if (!name.getText().toString().matches("") && !quantity.getText().toString().matches("")) {
-                                    Ingredient ingredient = new Ingredient(name.getText().toString(), "Malt", Integer.parseInt(quantity.getText().toString()));
+                                    Ingredient ingredient = new Ingredient(name.getText().toString(), "malt", Integer.parseInt(quantity.getText().toString()));
                                     ingredients.add(ingredient);
                                     inflateIngredient(ingredient);
                                     Log.d("TEST", "Add ingredient");
@@ -137,7 +137,7 @@ public class AddBeerActivity3 extends AppCompatActivity{
                                 EditText name = (EditText)dialogView.findViewById(R.id.ingredient_name);
                                 EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
                                 if (!name.getText().toString().matches("") && !quantity.getText().toString().matches("")) {
-                                    Ingredient ingredient = new Ingredient(name.getText().toString(), "Houblon Amerisant", Integer.parseInt(quantity.getText().toString()));
+                                    Ingredient ingredient = new Ingredient(name.getText().toString(), "houblonAm", Integer.parseInt(quantity.getText().toString()));
                                     ingredients.add(ingredient);
                                     inflateIngredient(ingredient);
                                     Log.d("TEST", "Add ingredient");
@@ -180,7 +180,7 @@ public class AddBeerActivity3 extends AppCompatActivity{
                                 EditText name = (EditText)dialogView.findViewById(R.id.ingredient_name);
                                 EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
                                 if (!name.getText().toString().matches("") && !quantity.getText().toString().matches("")) {
-                                    Ingredient ingredient = new Ingredient(name.getText().toString(), "Houblon Aromatisant", Integer.parseInt(quantity.getText().toString()));
+                                    Ingredient ingredient = new Ingredient(name.getText().toString(), "houblonAr", Integer.parseInt(quantity.getText().toString()));
                                     ingredients.add(ingredient);
                                     inflateIngredient(ingredient);
                                     Log.d("TEST", "Add ingredient");
@@ -223,7 +223,7 @@ public class AddBeerActivity3 extends AppCompatActivity{
                                 EditText name = (EditText)dialogView.findViewById(R.id.ingredient_name);
                                 EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
                                 if (!name.getText().toString().matches("") && !quantity.getText().toString().matches("")) {
-                                    Ingredient ingredient = new Ingredient(name.getText().toString(), "Epice", Integer.parseInt(quantity.getText().toString()));
+                                    Ingredient ingredient = new Ingredient(name.getText().toString(), "epice", Integer.parseInt(quantity.getText().toString()));
                                     ingredients.add(ingredient);
                                     inflateIngredient(ingredient);
                                     Log.d("TEST", "Add ingredient");
@@ -266,7 +266,7 @@ public class AddBeerActivity3 extends AppCompatActivity{
                                 EditText name = (EditText)dialogView.findViewById(R.id.ingredient_name);
                                 EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
                                 if (!name.getText().toString().matches("") && !quantity.getText().toString().matches("")) {
-                                    Ingredient ingredient = new Ingredient(name.getText().toString(), "Levure", Integer.parseInt(quantity.getText().toString()));
+                                    Ingredient ingredient = new Ingredient(name.getText().toString(), "levure", Integer.parseInt(quantity.getText().toString()));
                                     ingredients.add(ingredient);
                                     inflateIngredient(ingredient);
                                 }
@@ -299,7 +299,7 @@ public class AddBeerActivity3 extends AppCompatActivity{
         TextView name = (TextView)ingredient.findViewById(R.id.list_ingredient_name);
         name.setText(ingredientToAdd.getName());
         TextView type = (TextView)ingredient.findViewById(R.id.list_ingredient_type);
-        type.setText(ingredientToAdd.getType());
+        type.setText(ingredientToAdd.getCleanType());
         TextView quantity = (TextView)ingredient.findViewById(R.id.list_ingredient_quantity);
         quantity.setText(String.valueOf(ingredientToAdd.getQuantity())+" g");
 
