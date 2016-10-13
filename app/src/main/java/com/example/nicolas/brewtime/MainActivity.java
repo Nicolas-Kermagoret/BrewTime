@@ -111,13 +111,7 @@ public class MainActivity extends AppCompatActivity {
         this.getMenuInflater().inflate(R.menu.validation_bar, menu);
         return true;
     }
-    public boolean onOptionsItemSelected(MenuItem menuItem) {
-        if (menuItem.getItemId() == R.id.bar_done) {
-            Log.d("test","test");
-            xml.writeXMLToFile(getBeers());
-        }
-        return true;
-    }
+
 }
 
 

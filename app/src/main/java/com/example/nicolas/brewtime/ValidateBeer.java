@@ -174,6 +174,8 @@ public class ValidateBeer extends AppCompatActivity {
 
 
             addToCalendar();
+            XMLWriter writer = new XMLWriter();
+            writer.writeXMLToFile(this.beer);
 
             Intent intent = new Intent(this.getApplicationContext(), (Class)MainActivity.class);
             this.startActivity(intent);
@@ -200,7 +202,7 @@ public class ValidateBeer extends AppCompatActivity {
 
         String[] date = splitDate(dateToAdd);
 
-        long calID = 3;
+        long calID = 1;
         long startMillis = 0;
         long endMillis = 0;
         Calendar beginTime = Calendar.getInstance();
