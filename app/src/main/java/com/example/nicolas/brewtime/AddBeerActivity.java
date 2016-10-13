@@ -81,7 +81,8 @@ public class AddBeerActivity extends AppCompatActivity {
             this.beer.setName(name.getText().toString());
             this.beer.setType(type.getText().toString());
             this.beer.setQuantity(quantity.getText().toString());
-            this.beer.setBrassage(date.getText().toString());
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yy", Locale.FRENCH);
+            this.beer.setBrassage((String)simpleDateFormat.format(this.myCalendar.getTime()));
             this.beer.setCalendarBrassage(this.myCalendar);
             Intent intent = new Intent(this.getApplicationContext(), (Class)AddBeerActivity2.class);
             intent.putExtra("Beer", (Serializable)this.beer);

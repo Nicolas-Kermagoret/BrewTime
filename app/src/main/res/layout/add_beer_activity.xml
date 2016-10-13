@@ -49,9 +49,10 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/ask_quantity"
                 android:hint="Quantité en L"
-                android:inputType="text"
+                android:inputType="numberDecimal"
                 android:textColor="@color/colorText"
-                android:textColorHint="@color/colorTextHint"/>
+                android:textColorHint="@color/colorTextHint"
+                />
 
         </LinearLayout>
 

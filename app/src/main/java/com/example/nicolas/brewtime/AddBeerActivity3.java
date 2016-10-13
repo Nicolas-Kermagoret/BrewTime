@@ -89,10 +89,12 @@ public class AddBeerActivity3 extends AppCompatActivity{
                             public void onClick(DialogInterface dialog, int id) {
                                 EditText name = (EditText)dialogView.findViewById(R.id.ingredient_name);
                                 EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
-                                Ingredient ingredient = new Ingredient(name.getText().toString(), "Malt", Integer.parseInt(quantity.getText().toString()));
-                                ingredients.add(ingredient);
-                                inflateIngredient(ingredient);
-                                Log.d("TEST", "Add ingredient");
+                                if (!name.getText().toString().matches("") && !quantity.getText().toString().matches("")) {
+                                    Ingredient ingredient = new Ingredient(name.getText().toString(), "Malt", Integer.parseInt(quantity.getText().toString()));
+                                    ingredients.add(ingredient);
+                                    inflateIngredient(ingredient);
+                                    Log.d("TEST", "Add ingredient");
+                                }
                             }
                         })
                         .setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
@@ -134,10 +136,12 @@ public class AddBeerActivity3 extends AppCompatActivity{
                             public void onClick(DialogInterface dialog, int id) {
                                 EditText name = (EditText)dialogView.findViewById(R.id.ingredient_name);
                                 EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
-                                Ingredient ingredient = new Ingredient(name.getText().toString(), "Houblon Amerisant", Integer.parseInt(quantity.getText().toString()));
-                                ingredients.add(ingredient);
-                                inflateIngredient(ingredient);
-                                Log.d("TEST", "Add ingredient");
+                                if (!name.getText().toString().matches("") && !quantity.getText().toString().matches("")) {
+                                    Ingredient ingredient = new Ingredient(name.getText().toString(), "Houblon Amerisant", Integer.parseInt(quantity.getText().toString()));
+                                    ingredients.add(ingredient);
+                                    inflateIngredient(ingredient);
+                                    Log.d("TEST", "Add ingredient");
+                                }
                             }
                         })
                         .setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
@@ -175,10 +179,12 @@ public class AddBeerActivity3 extends AppCompatActivity{
                             public void onClick(DialogInterface dialog, int id) {
                                 EditText name = (EditText)dialogView.findViewById(R.id.ingredient_name);
                                 EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
-                                Ingredient ingredient = new Ingredient(name.getText().toString(), "Houblon Aromatisant", Integer.parseInt(quantity.getText().toString()));
-                                ingredients.add(ingredient);
-                                inflateIngredient(ingredient);
-                                Log.d("TEST", "Add ingredient");
+                                if (!name.getText().toString().matches("") && !quantity.getText().toString().matches("")) {
+                                    Ingredient ingredient = new Ingredient(name.getText().toString(), "Houblon Aromatisant", Integer.parseInt(quantity.getText().toString()));
+                                    ingredients.add(ingredient);
+                                    inflateIngredient(ingredient);
+                                    Log.d("TEST", "Add ingredient");
+                                }
                             }
                         })
                         .setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
@@ -216,10 +222,12 @@ public class AddBeerActivity3 extends AppCompatActivity{
                             public void onClick(DialogInterface dialog, int id) {
                                 EditText name = (EditText)dialogView.findViewById(R.id.ingredient_name);
                                 EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
-                                Ingredient ingredient = new Ingredient(name.getText().toString(), "Epice", Integer.parseInt(quantity.getText().toString()));
-                                ingredients.add(ingredient);
-                                inflateIngredient(ingredient);
-                                Log.d("TEST", "Add ingredient");
+                                if (!name.getText().toString().matches("") && !quantity.getText().toString().matches("")) {
+                                    Ingredient ingredient = new Ingredient(name.getText().toString(), "Epice", Integer.parseInt(quantity.getText().toString()));
+                                    ingredients.add(ingredient);
+                                    inflateIngredient(ingredient);
+                                    Log.d("TEST", "Add ingredient");
+                                }
                             }
                         })
                         .setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
@@ -257,9 +265,11 @@ public class AddBeerActivity3 extends AppCompatActivity{
                                 // sign in the user ...
                                 EditText name = (EditText)dialogView.findViewById(R.id.ingredient_name);
                                 EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
-                                Ingredient ingredient = new Ingredient(name.getText().toString(), "Levure", Integer.parseInt(quantity.getText().toString()));
-                                ingredients.add(ingredient);
-                                inflateIngredient(ingredient);
+                                if (!name.getText().toString().matches("") && !quantity.getText().toString().matches("")) {
+                                    Ingredient ingredient = new Ingredient(name.getText().toString(), "Levure", Integer.parseInt(quantity.getText().toString()));
+                                    ingredients.add(ingredient);
+                                    inflateIngredient(ingredient);
+                                }
 
                             }
                         })
