@@ -77,6 +77,7 @@ public class XMLParser extends Activity {
                         Log.d("TEST", "New Beer");
                         currentBeer = new Beer();
                     } else if (currentBeer != null){
+                        Log.d("NAME: ", name);
                         if (name.equals("beerName")){
                             currentBeer.setName(parser.nextText());
                         } else if (name.equals("type")){
@@ -91,33 +92,14 @@ public class XMLParser extends Activity {
                             currentBeer.setGarde(parser.nextText());
                         }else if (name.equals("embouteillage")){
                             currentBeer.setEmbouteillage(parser.nextText());
-                        }else if (name.equals("degustation")){
+                        }else if (name.equals("degustation")) {
                             currentBeer.setDegustation(parser.nextText());
-                        }else if (name.equals("malt")){
+                        }else if(!name.equals("dates") && !name.equals("ingredients")){
                             parser.next();
-                            currentBeer.getMalts().add(parser.nextText());
+                            String ing_name = parser.nextText();
                             parser.next();
-                            currentBeer.getMaltsQuantity().add(parser.nextText());
-                        }else if (name.equals("houblonAm")){
-                            parser.next();
-                            currentBeer.getHoublonsAmer().add(parser.nextText());
-                            parser.next();
-                            currentBeer.getHoublonsAmerQuantity().add(parser.nextText());
-                        }else if (name.equals("houblonAr")){
-                            parser.next();
-                            currentBeer.getHoublonsArome().add(parser.nextText());
-                            parser.next();
-                            currentBeer.getHoublonsAromeQuantity().add(parser.nextText());
-                        }else if (name.equals("epice")){
-                            parser.next();
-                            currentBeer.getEpices().add(parser.nextText());
-                            parser.next();
-                            currentBeer.getEpicesQuantity().add(parser.nextText());
-                        }else if (name.equals("levure")){
-                            parser.next();
-                            currentBeer.getLevures().add(parser.nextText());
-                            parser.next();
-                            currentBeer.getLevuresQuantity().add(parser.nextText());
+                            int quantity = Integer.parseInt(parser.nextText());
+                            currentBeer.addIngredient(new Ingredient(ing_name,name,quantity));
                         }
                     }
                     break;

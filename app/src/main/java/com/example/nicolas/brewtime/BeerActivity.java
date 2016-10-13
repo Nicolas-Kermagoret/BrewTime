@@ -69,6 +69,7 @@ public class BeerActivity extends AppCompatActivity{
         TextView[] amerText = new TextView[beer.getHoublonsAmer().size()];
         TextView[] epiceText = new TextView[beer.getEpices().size()];
         TextView[] levureText = new TextView[beer.getLevures().size()];
+
         RelativeLayout malts = (RelativeLayout)this.findViewById(R.id.malt);
         RelativeLayout amer= (RelativeLayout)this.findViewById(R.id.amer);
         RelativeLayout arome= (RelativeLayout)this.findViewById(R.id.arome);
@@ -88,7 +89,7 @@ public class BeerActivity extends AppCompatActivity{
             }
             layoutParams.addRule(11);
             maltText[i].setTextSize(2, 16.0f);
-            maltText[i].setText(beer.getMalts().get(i) + " " + beer.getMaltsQuantity().get(i)+"g");
+            maltText[i].setText(beer.getMalts().get(i).getName() + " " + beer.getMalts().get(i).getQuantity()+"g");
             malts.addView(maltText[i], layoutParams);
         }
         for (int j = 0; j < beer.getHoublonsArome().size(); ++j) {
@@ -103,7 +104,7 @@ public class BeerActivity extends AppCompatActivity{
             }
             layoutParams.addRule(11);
             aromeText[j].setTextSize(2, 16.0f);
-            aromeText[j].setText(beer.getHoublonsArome().get(j) + " " + beer.getHoublonsAromeQuantity().get(j)+"g");
+            aromeText[j].setText(beer.getHoublonsArome().get(j).getName() + " " + beer.getHoublonsArome().get(j).getQuantity()+"g");
             arome.addView(aromeText[j], layoutParams);
         }
         for (int i = 0; i < beer.getHoublonsAmer().size(); ++i) {
@@ -118,7 +119,7 @@ public class BeerActivity extends AppCompatActivity{
             }
             layoutParams.addRule(11);
             amerText[i].setTextSize(2, 16.0f);
-            amerText[i].setText(beer.getHoublonsAmer().get(i) + " " + beer.getHoublonsAmerQuantity().get(i)+"g");
+            amerText[i].setText(beer.getHoublonsAmer().get(i).getName() + " " + beer.getHoublonsAmer().get(i).getQuantity()+"g");
             amer.addView(amerText[i], layoutParams);
         }
         for (int i = 0; i < beer.getEpices().size(); ++i) {
@@ -133,7 +134,7 @@ public class BeerActivity extends AppCompatActivity{
             }
             layoutParams.addRule(11);
             epiceText[i].setTextSize(2, 16.0f);
-            epiceText[i].setText(beer.getEpices().get(i) + " " + beer.getEpicesQuantity().get(i)+"g");
+            epiceText[i].setText(beer.getEpices().get(i).getName() + " " + beer.getEpices().get(i).getQuantity()+"g");
             epices.addView(epiceText[i], layoutParams);
         }
         for (int i = 0; i < beer.getLevures().size(); ++i) {
@@ -148,7 +149,7 @@ public class BeerActivity extends AppCompatActivity{
             }
             layoutParams.addRule(11);
             levureText[i].setTextSize(2, 16.0f);
-            levureText[i].setText(beer.getLevures().get(i) + " " + beer.getLevuresQuantity().get(i)+"g");
+            levureText[i].setText(beer.getLevures().get(i).getName() + " " + beer.getLevures().get(i).getQuantity()+"g");
             levure.addView(levureText[i], layoutParams);
         }
     }

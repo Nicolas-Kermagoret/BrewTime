@@ -1,10 +1,12 @@
 package com.example.nicolas.brewtime;
 
+import java.io.Serializable;
+
 /**
  * Created by nicolas on 06/10/16.
  */
 
-public class Ingredient {
+public class Ingredient implements Serializable {
 
     private String name;
     private String type;

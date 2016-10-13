@@ -3,14 +3,6 @@ package com.example.nicolas.brewtime;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.DocumentBuilder;
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Node;
-import org.w3c.dom.Element;
-import java.io.File;
-
 
 /**
  * Created by nicolas on 02/01/16.
@@ -26,33 +18,12 @@ public class Beer implements Serializable{
     private String embouteillage;
     private String degustation;
 
-    private ArrayList<String> malts;
-    private ArrayList<String> houblonsAmer;
-    private ArrayList<String> houblonsArome;
-    private ArrayList<String> epices;
-    private ArrayList<String> levures;
-
-    private ArrayList<String> maltsQuantity;
-    private ArrayList<String> houblonsAmerQuantity;
-    private ArrayList<String> houblonsAromeQuantity;
-    private ArrayList<String> epicesQuantity;
-    private ArrayList<String> levuresQuantity;
+    private ArrayList<Ingredient> ingredients;
 
     private Calendar calendarBrassage;
 
     public Beer(){
-        this.malts = new ArrayList<String>();
-        this.houblonsAmer = new ArrayList<String>();
-        this.houblonsArome = new ArrayList<String>();
-        this.epices = new ArrayList<String>();
-        this.levures = new ArrayList<String>();
-
-        this.maltsQuantity = new ArrayList<String>();
-        this.houblonsAmerQuantity = new ArrayList<String>();
-        this.houblonsAromeQuantity = new ArrayList<String>();
-        this.epicesQuantity = new ArrayList<String>();
-        this.levuresQuantity = new ArrayList<String>();
-
+        this.ingredients = new ArrayList<Ingredient>();
     }
 
     public String getName() {
@@ -83,49 +54,67 @@ public class Beer implements Serializable{
         return degustation;
     }
 
-    public ArrayList<String> getMalts() {
-        return malts;
-    }
-
-    public ArrayList<String> getHoublonsAmer() {
-        return houblonsAmer;
-    }
-
-    public ArrayList<String> getHoublonsArome() {
-        return houblonsArome;
-    }
-
-    public ArrayList<String> getEpices() {
-        return epices;
-    }
-
-    public ArrayList<String> getLevures() {
-        return levures;
-    }
-
     public String getQuantity() {
         return quantity;
     }
 
-    public ArrayList<String> getMaltsQuantity() {
-        return maltsQuantity;
+    public ArrayList<Ingredient> getMalts() {
+        ArrayList<Ingredient> malts = new ArrayList<Ingredient>();
+
+        for(Ingredient ing : ingredients){
+            if(ing.getType() == "malts"){
+                malts.add(ing);
+            }
+        }
+        return malts;
     }
 
-    public ArrayList<String> getHoublonsAmerQuantity() {
-        return houblonsAmerQuantity;
+    public ArrayList<Ingredient> getHoublonsAmer() {
+        ArrayList<Ingredient> houblonsAmer = new ArrayList<Ingredient>();
+
+        for(Ingredient ing : ingredients){
+            if(ing.getType() == "houblonAm"){
+                houblonsAmer.add(ing);
+            }
+        }
+        return houblonsAmer;
     }
 
-    public ArrayList<String> getHoublonsAromeQuantity() {
-        return houblonsAromeQuantity;
+    public ArrayList<Ingredient> getHoublonsArome(){
+        ArrayList<Ingredient> houblonsArome = new ArrayList<Ingredient>();
+
+        for(Ingredient ing : ingredients){
+            if(ing.getType() == "houblonAr"){
+                houblonsArome.add(ing);
+            }
+        }
+        return houblonsArome;
     }
 
-    public ArrayList<String> getEpicesQuantity() {
-        return epicesQuantity;
+    public ArrayList<Ingredient> getEpices() {
+        ArrayList<Ingredient> epices = new ArrayList<Ingredient>();
+
+        for(Ingredient ing : ingredients){
+            if(ing.getType() == "epice"){
+                epices.add(ing);
+            }
+        }
+        return epices;
     }
 
-    public ArrayList<String> getLevuresQuantity() {
-        return levuresQuantity;
+    public ArrayList<Ingredient> getLevures() {
+        ArrayList<Ingredient> levures = new ArrayList<Ingredient>();
+
+        for(Ingredient ing : ingredients){
+            if(ing.getType() == "levure"){
+                levures.add(ing);
+            }
+        }
+        return levures;
     }
+
+
+    public ArrayList<Ingredient> getIngredients() {return ingredients;}
 
     public void setName(String name) {
         this.name = name;
@@ -155,36 +144,17 @@ public class Beer implements Serializable{
         this.degustation = degustation;
     }
 
-    public void addMalt(Ingredient malt) {
-        this.malts.add(malt.getName());
-        this.maltsQuantity.add(String.valueOf(malt.getQuantity()));
-    }
-
-    public void addHoublonAmer(Ingredient amer) {
-        this.houblonsAmer.add(amer.getName());
-        this.houblonsAmerQuantity.add(String.valueOf(amer.getQuantity()));
-    }
-
-    public void addHoublonArome(Ingredient arome) {
-        this.houblonsArome.add(arome.getName());
-        this.houblonsAromeQuantity.add(String.valueOf(arome.getQuantity()));
-    }
-
-    public void addEpice(Ingredient epice) {
-        this.epices.add(epice.getName());
-        this.epicesQuantity.add(String.valueOf(epice.getQuantity()));
-    }
-
-    public void addLevure(Ingredient levure) {
-        this.levures.add(levure.getName());
-        this.levuresQuantity.add(String.valueOf(levure.getQuantity()));
+    public void addIngredient(Ingredient ingredient){
+        this.ingredients.add(ingredient);
     }
 
     public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
 
-
+    public void setIngredients(ArrayList<Ingredient> ingredients){
+        this.ingredients =ingredients;
+    }
 
     public Calendar getCalendarBrassage() {
         return calendarBrassage;

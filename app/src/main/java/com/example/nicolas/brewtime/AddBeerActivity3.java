@@ -310,27 +310,7 @@ public class AddBeerActivity3 extends AppCompatActivity{
     }
 
     public void setIngredients(){
-        for (int i=0; i<this.ingredients.size(); i++){
-            if(ingredients.get(i).getType()=="Malt"){
-                this.beer.addMalt(ingredients.get(i));
-            }
-
-            else if(ingredients.get(i).getType()=="Houblon Amerisant"){
-                this.beer.addHoublonAmer(ingredients.get(i));
-            }
-
-            else if(ingredients.get(i).getType()=="Houblon Aromatisant"){
-                this.beer.addHoublonArome(ingredients.get(i));
-            }
-
-            else if(ingredients.get(i).getType()=="Epice"){
-                this.beer.addEpice(ingredients.get(i));
-            }
-
-            else if(ingredients.get(i).getType()=="Levure"){
-                this.beer.addLevure(ingredients.get(i));
-            }
-        }
+        this.beer.setIngredients(ingredients);
     }
 
 }
