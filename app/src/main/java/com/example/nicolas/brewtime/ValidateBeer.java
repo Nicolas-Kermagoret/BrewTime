@@ -175,7 +175,7 @@ public class ValidateBeer extends AppCompatActivity {
 
             addToCalendar();
             XMLWriter writer = new XMLWriter();
-            writer.writeXMLToFile(this.beer);
+            writer.writeXMLToFile(this.beer, this);
 
             Intent intent = new Intent(this.getApplicationContext(), (Class)MainActivity.class);
             this.startActivity(intent);

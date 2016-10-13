@@ -1,5 +1,8 @@
 package com.example.nicolas.brewtime;
 
+import android.app.Activity;
+import android.app.Application;
+import android.os.Environment;
 import android.util.Log;
 
 import java.io.File;
@@ -22,7 +25,7 @@ import org.w3c.dom.Node;
  */
 
 public class XMLWriter {
-    public void writeXMLToFile(Beer beer){
+    public void writeXMLToFile(Beer beer, Activity activity){
         DocumentBuilderFactory icFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder icBuilder;
         try {
@@ -83,11 +86,13 @@ public class XMLWriter {
             mainRootElement.appendChild(new_beer);
             Log.d("Ajout  de la bière : ", beer.getName());
 
-            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
             DOMSource source = new DOMSource(doc);
-            StreamResult console = new StreamResult(System.out);
-            transformer.transform(source, console);
+            StreamResult streamResult =  new StreamResult(new File(activity.getFilesDir().getAbsolutePath()+'/'+beer.getName()));
+            transformer.transform(source, streamResult);
 
             System.out.println("\nXML DOM Created Successfully..");
             //*/
