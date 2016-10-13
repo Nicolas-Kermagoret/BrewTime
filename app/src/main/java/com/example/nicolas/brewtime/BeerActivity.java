@@ -66,6 +66,8 @@ public class BeerActivity extends AppCompatActivity{
         imageView.setImageResource(this.getResources().getIdentifier("beer_icon_" + beer.getType().toLowerCase(), "drawable", this.getPackageName()));
         TextView[] maltText = new TextView[beer.getMalts().size()];
         TextView[] aromeText = new TextView[beer.getHoublonsArome().size()];
+        Log.d("Taille Houblon Arome", Integer.toString(beer.getHoublonsArome().size()));
+
         TextView[] amerText = new TextView[beer.getHoublonsAmer().size()];
         TextView[] epiceText = new TextView[beer.getEpices().size()];
         TextView[] levureText = new TextView[beer.getLevures().size()];

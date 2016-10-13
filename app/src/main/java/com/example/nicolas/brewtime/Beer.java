@@ -62,7 +62,7 @@ public class Beer implements Serializable{
         ArrayList<Ingredient> malts = new ArrayList<Ingredient>();
 
         for(Ingredient ing : ingredients){
-            if(ing.getType() == "malts"){
+            if(ing.getType().equals("malt")){
                 malts.add(ing);
             }
         }
@@ -73,7 +73,7 @@ public class Beer implements Serializable{
         ArrayList<Ingredient> houblonsAmer = new ArrayList<Ingredient>();
 
         for(Ingredient ing : ingredients){
-            if(ing.getType() == "houblonAm"){
+            if(ing.getType().equals("houblonAm")){
                 houblonsAmer.add(ing);
             }
         }
@@ -84,7 +84,7 @@ public class Beer implements Serializable{
         ArrayList<Ingredient> houblonsArome = new ArrayList<Ingredient>();
 
         for(Ingredient ing : ingredients){
-            if(ing.getType() == "houblonAr"){
+            if(ing.getType().equals("houblonAr")){
                 houblonsArome.add(ing);
             }
         }
@@ -95,7 +95,7 @@ public class Beer implements Serializable{
         ArrayList<Ingredient> epices = new ArrayList<Ingredient>();
 
         for(Ingredient ing : ingredients){
-            if(ing.getType() == "epice"){
+            if(ing.getType().equals("epice")){
                 epices.add(ing);
             }
         }
@@ -106,7 +106,7 @@ public class Beer implements Serializable{
         ArrayList<Ingredient> levures = new ArrayList<Ingredient>();
 
         for(Ingredient ing : ingredients){
-            if(ing.getType() == "levure"){
+            if(ing.getType().equals("levure")){
                 levures.add(ing);
             }
         }
