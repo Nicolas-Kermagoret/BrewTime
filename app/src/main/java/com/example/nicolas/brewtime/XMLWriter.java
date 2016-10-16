@@ -50,7 +50,7 @@ public class XMLWriter {
 
             new_beer_name.setTextContent(beer.getName());
             new_beer_type.setTextContent(beer.getType());
-            new_beer_litres.setTextContent(beer.getType());
+            new_beer_litres.setTextContent(beer.getQuantity());
 
             date_brassage.setTextContent(beer.getBrassage());
             date_secondaire.setTextContent(beer.getSecondaire());

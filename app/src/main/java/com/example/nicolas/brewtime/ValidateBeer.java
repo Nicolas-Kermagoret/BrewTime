@@ -68,13 +68,18 @@ public class ValidateBeer extends AppCompatActivity {
 
         type.setText(beer.getType());
         date.setText(beer.getBrassage());
-        quantity.setText(beer.getQuantity());
+        quantity.setText(beer.getQuantity()+"L");
         secondaire.setText(beer.getSecondaire());
         garde.setText(beer.getGarde());
         embouteillage.setText(beer.getEmbouteillage());
         degustation.setText(beer.getDegustation());
 
-        imageView.setImageResource(this.getResources().getIdentifier("beer_icon_" + beer.getType().toLowerCase(), "drawable", this.getPackageName()));
+        int picturePath = this.getResources().getIdentifier("beer_icon_" + beer.getType().toLowerCase(), "drawable", this.getPackageName());
+        if (picturePath == 0){
+            picturePath = this.getResources().getIdentifier("beer_icon_blonde", "drawable", this.getPackageName());
+        }
+
+        imageView.setImageResource(picturePath);
         TextView[] maltText = new TextView[beer.getMalts().size()];
         TextView[] aromeText = new TextView[beer.getHoublonsArome().size()];
         TextView[] amerText = new TextView[beer.getHoublonsAmer().size()];

@@ -104,7 +104,12 @@ public class MainActivity extends AppCompatActivity {
 
             //Recuperer le nom de l'icone à partir du type de bière et recuperer son id puis repasser ça en String
 
-            element.put("image",Integer.toString(getResources().getIdentifier("beer_icon_" + this.beers.get(i).getType().toLowerCase(), "drawable", getPackageName())));
+            int picturePath = this.getResources().getIdentifier("beer_icon_" + this.beers.get(i).getType().toLowerCase(), "drawable", this.getPackageName());
+            if (picturePath == 0){
+                picturePath = this.getResources().getIdentifier("beer_icon_blonde", "drawable", this.getPackageName());
+            }
+
+            element.put("image",Integer.toString(picturePath));
             liste.add(element);
         }
 
@@ -144,10 +149,6 @@ public class MainActivity extends AppCompatActivity {
         private ImageView personImageView;
     }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        this.getMenuInflater().inflate(R.menu.validation_bar, menu);
-        return true;
-    }
 
 }
 
