@@ -20,8 +20,14 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,7 +37,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
     private ListView mListView;
-    private ArrayList<Beer> beers;
+    private ArrayList<Beer> beers = new ArrayList<Beer>();
 
     public ArrayList<Beer> getBeers() {
         return beers;
@@ -41,23 +47,49 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         Log.d("iiiiiiiiiiiiiiii","=====l==========================================");
         Log.d("", getFilesDir().getAbsolutePath());
         Log.d("","==================================================");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Instanciation du Parser XML qui va recuperer toutes les bières et les mettre dans beers
-
         Toolbar toolbar =   (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         XMLParser parser = new XMLParser();
-        XmlPullParser pullParser= getResources().getXml(R.xml.beers);
-        parser.parse(pullParser);
-        this.beers = parser.getBeers();
 
+        //Instanciation du Parser XML qui va recuperer toutes les bières et les mettre dans beers
+        File folder = new File(getFilesDir().getAbsolutePath());
+        File[] listOfFiles = folder.listFiles();
+        XmlPullParserFactory xppf = null;
+        XmlPullParser xpp = null;
+        try {
+            xppf = XmlPullParserFactory.newInstance();
+            xpp = xppf.newPullParser();
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        }
+        InputStream is;
+        for (int i = 0; i < listOfFiles.length; i++) {
+            if (listOfFiles[i].isFile()) {
+                try {
+                    System.out.println("File " + listOfFiles[i].getName());
+                    is = new FileInputStream(listOfFiles[i].getAbsolutePath());
+                    xpp.setInput(is,"utf-8");
+                    parser.parse(xpp);
+                    Beer test = parser.getBeer();
+                    this.beers.add(test);
+                } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } catch (XmlPullParserException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
         mListView = (ListView) findViewById(R.id.listView);
 
         List<Map<String, String>> liste = new ArrayList<Map<String, String>>();

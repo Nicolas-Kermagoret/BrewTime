@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public class XMLParser extends Activity {
 
-    private ArrayList<Beer> beers;
+    private Beer beer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -29,8 +29,8 @@ public class XMLParser extends Activity {
 
     }
 
-    public ArrayList<Beer> getBeers() {
-        return beers;
+    public Beer getBeer() {
+        return beer;
     }
 
     public void parse(XmlPullParser parser){
@@ -59,7 +59,7 @@ public class XMLParser extends Activity {
     private void parseXML(XmlPullParser parser) throws XmlPullParserException,IOException
     {
         Log.d("DEBUG", "in parseXML");
-        this.beers = new ArrayList<Beer>();
+        this.beer = new Beer();
         int eventType = parser.getEventType();
         Beer currentBeer = null;
 
@@ -68,7 +68,7 @@ public class XMLParser extends Activity {
             switch (eventType){
                 case XmlPullParser.START_DOCUMENT:
                     //Log.d("TEST", "START_DOCUMENT");
-                    beers = new ArrayList<Beer>();
+                    beer = new Beer();
                     break;
                 case XmlPullParser.START_TAG:
                     //Log.d("TEST", "START_TAG");
@@ -95,9 +95,10 @@ public class XMLParser extends Activity {
                         }else if (name.equals("degustation")) {
                             currentBeer.setDegustation(parser.nextText());
                         }else if(!name.equals("dates") && !name.equals("ingredients")){
-                            parser.next();
+                            parser.nextTag();
+                            String test = parser.getName();
                             String ing_name = parser.nextText();
-                            parser.next();
+                            parser.nextTag();
                             int quantity = Integer.parseInt(parser.nextText());
                             currentBeer.addIngredient(new Ingredient(ing_name,name,quantity));
                         }
@@ -108,7 +109,7 @@ public class XMLParser extends Activity {
                     //Log.d("TEST", "END XML");
                     if (name.equalsIgnoreCase("beer") && currentBeer != null){
                         Log.d("TEST", "Adding beer");
-                        beers.add(currentBeer);
+                        beer = currentBeer;
                     }
             }
             eventType = parser.next();
