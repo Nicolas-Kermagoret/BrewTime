@@ -171,6 +171,7 @@ public class BeerActivity extends AppCompatActivity{
 
             String beerName = "Nom , " +beer.getName() +"\n";
             String beerType = "Type , " + beer.getType()+"\n";
+            String beerQuantity = "Quantity , " + beer.getQuantity()+"L\n";
             String beerBrassageDate = "Brassage , " + beer.getBrassage()+"\n";
             String beerSecondaireDate = "Fermentation secondaire , " + beer.getSecondaire()+"\n";
             String beerGardeDate = "Garde , " + beer.getGarde()+"\n";
@@ -178,16 +179,44 @@ public class BeerActivity extends AppCompatActivity{
             String beerDegustationDate = "Degustation , " + beer.getDegustation()+"\n";
             String beerIngredients = "Ingredient, Nom, Quantity"+"\n";
 
-            String beerToWrite = beerName + beerType + beerBrassageDate + beerSecondaireDate + beerGardeDate + beerEmbouteillageDate + beerDegustationDate + beerIngredients;
+            String malts ="";
+            String houblonsAm ="";
+            String houblonsAr ="";
+            String epices ="";
+            String levures ="";
+
+            for(int i=0; i<this.beer.getMalts().size(); i++){
+                malts += "Malt , " + this.beer.getMalts().get(i).getName() + " , " + this.beer.getMalts().get(i).getQuantity() + "g\n";
+            }
+
+            for(int i=0; i<this.beer.getHoublonsAmer().size(); i++){
+                houblonsAm += "Houblon Amerisant , " + this.beer.getHoublonsAmer().get(i).getName() + " , " + this.beer.getHoublonsAmer().get(i).getQuantity() + "g\n";
+            }
+
+            for(int i=0; i<this.beer.getHoublonsArome().size(); i++){
+                houblonsAr += "Houblon Aromatisant , " + this.beer.getHoublonsArome().get(i).getName() + " , " + this.beer.getHoublonsArome().get(i).getQuantity() + "g\n";
+            }
+
+            for(int i=0; i<this.beer.getEpices().size(); i++){
+                epices += "Epice , " + this.beer.getEpices().get(i).getName() + " , " + this.beer.getEpices().get(i).getQuantity() + "g\n";
+            }
+
+            for(int i=0; i<this.beer.getLevures().size(); i++){
+                levures += "Levure , " + this.beer.getLevures().get(i).getName() + " , " + this.beer.getLevures().get(i).getQuantity() + "g\n";
+            }
+
+
+
+            String beerToWrite = beerName + beerType + beerQuantity + beerBrassageDate + beerSecondaireDate + beerGardeDate + beerEmbouteillageDate + beerDegustationDate + beerIngredients + malts + houblonsAm + houblonsAr + epices + levures;
 
             File file   = null;
             File root   = Environment.getExternalStorageDirectory();
-            Log.d("Test", "Does root can write ?");
             if (root.canWrite()){
-                Log.d("Test", "Root can write");
                 File dir    =   new File (root.getAbsolutePath() + "/PersonData");
                 dir.mkdirs();
-                file   =   new File(dir, "Data.csv");
+                String date = formatDate(this.beer.getBrassage());
+                file   =   new File(dir, this.beer.getName() +"_"+ this.beer.getType()+"_" + date +".csv");
+                Log.d("filename", this.beer.getName() +"_"+ this.beer.getType()+"_" + this.beer.getBrassage() +".csv");
                 FileOutputStream out   =   null;
                 try {
                     out = new FileOutputStream(file);
@@ -218,6 +247,12 @@ public class BeerActivity extends AppCompatActivity{
 
         }
         return true;
+    }
+
+    public String formatDate(String date){
+        String[] split = date.split("/");
+        String dateFile = split[0] + "-" + split[1] + "-" + split[2];
+        return dateFile;
     }
 
 
