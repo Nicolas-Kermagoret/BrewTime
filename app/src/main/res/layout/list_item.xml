@@ -28,4 +28,13 @@
         android:layout_toRightOf="@+id/beer_icon_list"
         android:layout_below="@+id/beer_name_list"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/beer_date_list"
+        android:background="@color/color_separator"
+        android:layout_marginTop="24dp"/>
+
+
+
 </RelativeLayout>
