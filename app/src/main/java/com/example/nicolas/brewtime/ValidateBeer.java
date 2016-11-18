@@ -3,6 +3,7 @@ package com.example.nicolas.brewtime;
 import android.Manifest;
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -24,11 +25,13 @@ import com.google.api.client.util.DateTime;
 
 import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.EventDateTime;
+import com.google.gson.Gson;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.Serializable;
 import java.util.Calendar;
 
@@ -179,8 +182,7 @@ public class ValidateBeer extends AppCompatActivity {
 
 
             addToCalendar();
-            XMLWriter writer = new XMLWriter();
-            writer.writeXMLToFile(this.beer, this);
+            this.toJson();
 
             Intent intent = new Intent(this.getApplicationContext(), (Class)MainActivity.class);
             this.startActivity(intent);
@@ -245,6 +247,23 @@ public class ValidateBeer extends AppCompatActivity {
 //        long eventID = Long.parseLong(uri.getLastPathSegment());
 
 
+    }
+
+    public void toJson(){
+        Gson gson = new Gson();
+        try {
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(this.getApplicationContext().openFileOutput(beer.getName()+".json", Context.MODE_PRIVATE));
+
+            String data_beer = gson.toJson(this.beer);
+            outputStreamWriter.write(data_beer);
+            outputStreamWriter.close();
+
+
+        } catch (FileNotFoundException e) {
+            Log.e("Exception","Open file failed" + e.toString());
+        } catch (IOException e) {
+            Log.e("Exception","File write failed" + e.toString());
+        }
     }
 
 
