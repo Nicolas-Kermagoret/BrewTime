@@ -1,5 +1,7 @@
 package com.example.nicolas.brewtime;
 
+import com.google.gson.Gson;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -163,4 +165,10 @@ public class Beer implements Serializable{
     public void setCalendarBrassage(Calendar calendarBrassage) {
         this.calendarBrassage = calendarBrassage;
     }
+
+    public String toJson(){
+        Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
 }

@@ -38,4 +38,5 @@ dependencies {
     compile('com.google.apis:google-api-services-calendar:v3-rev214-1.22.0') {
         exclude group: 'org.apache.httpcomponents'
     }
+    compile 'com.google.code.gson:gson:2.2.4'
 }

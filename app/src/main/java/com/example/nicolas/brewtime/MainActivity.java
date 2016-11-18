@@ -1,5 +1,6 @@
 package com.example.nicolas.brewtime;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.os.Bundle;
@@ -19,6 +20,8 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -28,11 +31,14 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static java.lang.System.in;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,9 +54,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("iiiiiiiiiiiiiiii","=====l==========================================");
-        Log.d("", getFilesDir().getAbsolutePath());
-        Log.d("","==================================================");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -73,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < listOfFiles.length; i++) {
             if (listOfFiles[i].isFile()) {
                 try {
-                    System.out.println("File " + listOfFiles[i].getName());
                     is = new FileInputStream(listOfFiles[i].getAbsolutePath());
                     xpp.setInput(is,"utf-8");
                     parser.parse(xpp);
@@ -94,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
 
         List<Map<String, String>> liste = new ArrayList<Map<String, String>>();
         HashMap<String, String> element;
+
+        this.toJson();
 
         //Mettre le nom, la date de brassage et l'icone de chaque biere dans une liste pour l'afficher
 
@@ -133,6 +137,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                                           int pos, long id) {
+                // TODO Auto-generated method stub
+
+                Log.v("long clicked","pos: " + pos);
+
+                return true;
+            }
+        });
+
         ((FloatingActionButton)this.findViewById(R.id.add_button)).setOnClickListener(new View.OnClickListener(){
 
             public void onClick(View view) {
@@ -147,6 +163,29 @@ public class MainActivity extends AppCompatActivity {
         private TextView nameTextView;
         private TextView surnameTextView;
         private ImageView personImageView;
+    }
+
+    public void toJson(){
+        for(Beer beer : beers){
+            try {
+                OutputStreamWriter outputStreamWriter = new OutputStreamWriter(this.getApplicationContext().openFileOutput(beer.getName(), Context.MODE_PRIVATE));
+
+                Gson gson = new Gson();
+                String data_beer = gson.toJson(beer);
+                outputStreamWriter.write(data_beer);
+                outputStreamWriter.close();
+
+
+            } catch (FileNotFoundException e) {
+                Log.e("Exception","Open file failed" + e.toString());
+            } catch (IOException e) {
+                Log.e("Exception","File write failed" + e.toString());
+            }
+        }
+    }
+
+    public void fromJson(){
+
     }
 
 

@@ -6,7 +6,8 @@
     <color name="colorAccentDark">#ff093a</color>
     <color name="colorBack">#F0F0F0</color>
     <color name="white">#FFFFFF</color>
-    <color name="colorText">#888888</color>
+    <color name="colorText">#555555</color>
+    <color name="colorTextLight">#888888</color>
     <color name="colorTextHint">#AAAAAA</color>
     <color name="color_separator">#DDDDDD</color>
 </resources>

@@ -5,35 +5,43 @@
 
     <ImageView
         android:id="@+id/beer_icon_list"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
-        android:layout_margin="8dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" />
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="20dp" />
 
-    <TextView
-        android:id="@+id/beer_name_list"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_toRightOf="@+id/beer_icon_list"
-        android:textSize="24dp"
-        android:textStyle="bold"/>
+        android:paddingLeft="72dp"
+        android:paddingRight="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:orientation="vertical"
+        >
 
-    <TextView
-        android:id="@+id/beer_date_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_toRightOf="@+id/beer_icon_list"
-        android:layout_below="@+id/beer_name_list"/>
+        <TextView
+            android:id="@+id/beer_name_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/beer_date_list"
-        android:background="@color/color_separator"
-        android:layout_marginTop="24dp"/>
+        <TextView
+            android:id="@+id/beer_date_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTextHint"/>
+
+
+    </LinearLayout>
+
+
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:layout_below="@id/beer_date_list"-->
+        <!--android:background="@color/color_separator"-->
+        <!--android:layout_marginTop="24dp"/>-->
 
 
 
