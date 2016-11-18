@@ -192,12 +192,15 @@ public class ValidateBeer extends AppCompatActivity {
 
     public void addToCalendar() {
 
-        addDateToCalendar(this.beer.getBrassage(), "Brassage");
-        addDateToCalendar(this.beer.getSecondaire(), "Fermentation Secondaire");
-        addDateToCalendar(this.beer.getGarde(), "Mise en Garde");
-        addDateToCalendar(this.beer.getEmbouteillage(), "Embouteillage");
-        addDateToCalendar(this.beer.getDegustation(), "Degustation");
+        long[] calendarIds = new long[5];
 
+        calendarIds[0] = addDateToCalendar(this.beer.getBrassage(), "Brassage");
+        calendarIds[1] = addDateToCalendar(this.beer.getSecondaire(), "Fermentation Secondaire");
+        calendarIds[2] = addDateToCalendar(this.beer.getGarde(), "Mise en Garde");
+        calendarIds[3] = addDateToCalendar(this.beer.getEmbouteillage(), "Embouteillage");
+        calendarIds[4] = addDateToCalendar(this.beer.getDegustation(), "Degustation");
+
+        this.beer.setCalendarIds(calendarIds);
     }
 
     public String[] splitDate(String date){
@@ -205,7 +208,7 @@ public class ValidateBeer extends AppCompatActivity {
         return split;
     }
 
-    public void addDateToCalendar(String dateToAdd, String operation){
+    public long addDateToCalendar(String dateToAdd, String operation){
 
         String[] date = splitDate(dateToAdd);
 
@@ -237,7 +240,6 @@ public class ValidateBeer extends AppCompatActivity {
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
-            return;
         }
 
         Uri uri = cr.insert(CalendarContract.Events.CONTENT_URI, values);
@@ -245,7 +247,7 @@ public class ValidateBeer extends AppCompatActivity {
 
 // get the event ID that is the last element in the Uri
 //        long eventID = Long.parseLong(uri.getLastPathSegment());
-
+        return  Long.parseLong(uri.getLastPathSegment());
 
     }
 

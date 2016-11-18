@@ -22,6 +22,8 @@ public class Beer implements Serializable{
 
     private ArrayList<Ingredient> ingredients;
 
+    private long[] calendarIds;
+
     private Calendar calendarBrassage;
 
     public Beer(){
@@ -164,6 +166,14 @@ public class Beer implements Serializable{
 
     public void setCalendarBrassage(Calendar calendarBrassage) {
         this.calendarBrassage = calendarBrassage;
+    }
+
+    public long[] getCalendarIds() {
+        return calendarIds;
+    }
+
+    public void setCalendarIds(long[] calendarIds) {
+        this.calendarIds = calendarIds;
     }
 
     public String toJson(){
