@@ -33,6 +33,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.io.Serializable;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -48,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
     public ArrayList<Beer> getBeers() {
         return beers;
     }
-    private XMLWriter xml = new XMLWriter();
 
 
 
@@ -57,52 +59,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar =   (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        XMLParser parser = new XMLParser();
 
-        //Instanciation du Parser XML qui va recuperer toutes les bières et les mettre dans beers
-        File folder = new File(getFilesDir().getAbsolutePath());
-        File[] listOfFiles = folder.listFiles();
-        XmlPullParserFactory xppf = null;
-        XmlPullParser xpp = null;
-        try {
-            xppf = XmlPullParserFactory.newInstance();
-            xpp = xppf.newPullParser();
-        } catch (XmlPullParserException e) {
-            e.printStackTrace();
-        }
-        InputStream is;
-        for (int i = 0; i < listOfFiles.length; i++) {
-            if (listOfFiles[i].isFile()) {
-                try {
-                    is = new FileInputStream(listOfFiles[i].getAbsolutePath());
-                    xpp.setInput(is,"utf-8");
-                    parser.parse(xpp);
-                    Beer test = parser.getBeer();
-                    this.beers.add(test);
-                } catch (FileNotFoundException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (XmlPullParserException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+        this.fromJson();
+
         mListView = (ListView) findViewById(R.id.listView);
 
-        List<Map<String, String>> liste = new ArrayList<Map<String, String>>();
+        List<Map<String, String>> liste = new ArrayList<>();
         HashMap<String, String> element;
-
-        this.toJson();
 
         //Mettre le nom, la date de brassage et l'icone de chaque biere dans une liste pour l'afficher
 
         for(int i=0; i<this.beers.size(); i++){
-            element = new HashMap<String, String>();
+            element = new HashMap<>();
             element.put("name",this.beers.get(i).getName());
             element.put("date", this.beers.get(i).getBrassage());
 
@@ -165,30 +135,35 @@ public class MainActivity extends AppCompatActivity {
         private ImageView personImageView;
     }
 
-    public void toJson(){
-        for(Beer beer : beers){
-            try {
-                OutputStreamWriter outputStreamWriter = new OutputStreamWriter(this.getApplicationContext().openFileOutput(beer.getName(), Context.MODE_PRIVATE));
+    public void fromJson(){
+        File folder = new File(getFilesDir().getAbsolutePath());
+        File[] listOfFiles = folder.listFiles();
 
-                Gson gson = new Gson();
-                String data_beer = gson.toJson(beer);
-                outputStreamWriter.write(data_beer);
-                outputStreamWriter.close();
+        Gson gson = new Gson();
 
+        for (File file : listOfFiles) {
+            String filename = file.getName();
+            if(filename.substring(filename.lastIndexOf(".")+1,filename.length()).equals("json")) {
+                String beerJson = null;
+                try {
+                    FileInputStream stream = new FileInputStream(file);
 
-            } catch (FileNotFoundException e) {
-                Log.e("Exception","Open file failed" + e.toString());
-            } catch (IOException e) {
-                Log.e("Exception","File write failed" + e.toString());
+                    FileChannel fc = stream.getChannel();
+                    MappedByteBuffer bb = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size());
+
+                    beerJson = Charset.defaultCharset().decode(bb).toString();
+
+                    stream.close();
+                } catch (FileNotFoundException e) {
+                    Log.e("Exception", "Open file failed" + e.toString());
+                } catch (IOException e) {
+                    Log.e("Exception", "Read file failed" + e.toString());
+                }
+
+                this.beers.add(gson.fromJson(beerJson, Beer.class));
             }
         }
     }
 
-    public void fromJson(){
-
-    }
-
 
 }
-
-

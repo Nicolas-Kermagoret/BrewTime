@@ -38,19 +38,10 @@ public class BeerActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.beer_display);
 
-        Gson gson = new Gson();
-
         this.beer = (Beer)this.getIntent().getSerializableExtra("Beer");
-
-        String beerJson = gson.toJson(this.beer);
-//
-//        Toolbar mActionBarToolbar = (Toolbar) findViewById(R.id.toolbar);
-//        getSupportActionBar().setTitle(beer.getName());
-//        setSupportActionBar(mActionBarToolbar);
 
         this.setSupportActionBar((Toolbar)this.findViewById(R.id.toolbar));
         this.getSupportActionBar().setTitle(beer.getName());
-
 
         TextView type = (TextView)this.findViewById(R.id.beer_type);
         TextView date = (TextView)this.findViewById(R.id.beer_date);
