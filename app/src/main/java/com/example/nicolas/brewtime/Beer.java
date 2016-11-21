@@ -1,7 +1,13 @@
 package com.example.nicolas.brewtime;
 
+import android.content.ContentUris;
+import android.content.Context;
+import android.net.Uri;
+import android.provider.CalendarContract;
+
 import com.google.gson.Gson;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -179,6 +185,21 @@ public class Beer implements Serializable{
     public String toJson(){
         Gson gson = new Gson();
         return gson.toJson(this);
+    }
+
+    public void delete(Context context){
+
+        Uri deleteUri = null;
+
+        for (Long id : this.getCalendarIds()){
+            deleteUri = ContentUris.withAppendedId(CalendarContract.Events.CONTENT_URI, id);
+            context.getContentResolver().delete(deleteUri, null, null);
+        }
+
+        File dir = context.getFilesDir();
+        File file = new File(dir, this.getName() +".json");
+        file.delete();
+
     }
 
 }

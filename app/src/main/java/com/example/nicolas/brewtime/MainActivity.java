@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         return beers;
     }
 
+    public boolean deleting = false;
+
 
 
     @Override
@@ -65,6 +67,33 @@ public class MainActivity extends AppCompatActivity {
 //        setSupportActionBar(toolbar);
 
         this.fromJson();
+
+        this.displayBeers();
+
+        ((FloatingActionButton)this.findViewById(R.id.add_button)).setOnClickListener(new View.OnClickListener(){
+
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this.getApplicationContext(), (Class)AddBeerActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+
+        registerForContextMenu(mListView);
+
+    }
+
+    static class ViewHolder {
+        private TextView nameTextView;
+        private TextView surnameTextView;
+        private ImageView personImageView;
+    }
+
+    public void displayBeers(){
+
+        if(deleting){
+            mListView.setAdapter(null);
+        }
+
 
         mListView = (ListView) findViewById(R.id.listView);
 
@@ -108,35 +137,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-//        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//            @Override
-//            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-//                                           int pos, long id) {
-//                // TODO Auto-generated method stub
-//
-//                Log.v("long clicked","pos: " + pos);
-//
-//                return true;
-//            }
-//        });
-
-        ((FloatingActionButton)this.findViewById(R.id.add_button)).setOnClickListener(new View.OnClickListener(){
-
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this.getApplicationContext(), (Class)AddBeerActivity.class);
-                MainActivity.this.startActivity(intent);
-            }
-        });
-
-        registerForContextMenu(mListView);
-
-    }
-
-    static class ViewHolder {
-        private TextView nameTextView;
-        private TextView surnameTextView;
-        private ImageView personImageView;
     }
 
     public void fromJson(){
@@ -182,6 +182,7 @@ public class MainActivity extends AppCompatActivity {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         switch (item.getItemId()) {
             case R.id.edit:
+                Log.d("CASE", "Edit");
                 editBeer(info.id);
                 return true;
             case R.id.delete:
@@ -193,11 +194,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void editBeer(long id){
-        Log.d("Edit beer","");
+        Log.d("Edit beer","lalalala");
     }
 
     public void deleteBeer(long id){
-        Log.d("Delete beer","");
+
+        this.beers.get((int)id).delete(this.getApplicationContext());
+        this.deleting=true;
+        this.displayBeers();
+        this.deleting=false;
+
     }
 
 
