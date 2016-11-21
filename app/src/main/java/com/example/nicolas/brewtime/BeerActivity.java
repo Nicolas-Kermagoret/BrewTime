@@ -41,7 +41,10 @@ public class BeerActivity extends AppCompatActivity{
         this.beer = (Beer)this.getIntent().getSerializableExtra("Beer");
 
         this.setSupportActionBar((Toolbar)this.findViewById(R.id.toolbar));
-        this.getSupportActionBar().setTitle(beer.getName());
+        this.getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        TextView toolbarBeerName = (TextView)this.findViewById(R.id.toolbarBeerName);
+        toolbarBeerName.setText(beer.getName());
 
         TextView type = (TextView)this.findViewById(R.id.beer_type);
         TextView date = (TextView)this.findViewById(R.id.beer_date);

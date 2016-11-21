@@ -35,10 +35,8 @@ public class AddBeerActivity2 extends AppCompatActivity {
         this.myDate = Calendar.getInstance();
         this.sdf = new SimpleDateFormat("dd/MM/yy", Locale.FRENCH);
         this.beer = (Beer)this.getIntent().getSerializableExtra("Beer");
-
         this.setSupportActionBar((Toolbar)this.findViewById(R.id.toolbar));
-        this.getSupportActionBar().setTitle("Fermentation");
-
+        this.getSupportActionBar().setDisplayShowTitleEnabled(false);
         this.setSpinners();
 
     }

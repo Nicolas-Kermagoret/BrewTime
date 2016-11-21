@@ -9,7 +9,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -59,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
 
         this.fromJson();
 
@@ -107,17 +109,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-                                           int pos, long id) {
-                // TODO Auto-generated method stub
-
-                Log.v("long clicked","pos: " + pos);
-
-                return true;
-            }
-        });
+//        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//            @Override
+//            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+//                                           int pos, long id) {
+//                // TODO Auto-generated method stub
+//
+//                Log.v("long clicked","pos: " + pos);
+//
+//                return true;
+//            }
+//        });
 
         ((FloatingActionButton)this.findViewById(R.id.add_button)).setOnClickListener(new View.OnClickListener(){
 
@@ -126,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(intent);
             }
         });
+
+        registerForContextMenu(mListView);
 
     }
 
@@ -163,6 +167,37 @@ public class MainActivity extends AppCompatActivity {
                 this.beers.add(gson.fromJson(beerJson, Beer.class));
             }
         }
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.context_menu, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        switch (item.getItemId()) {
+            case R.id.edit:
+                editBeer(info.id);
+                return true;
+            case R.id.delete:
+                deleteBeer(info.id);
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
+
+    public void editBeer(long id){
+        Log.d("Edit beer","");
+    }
+
+    public void deleteBeer(long id){
+        Log.d("Delete beer","");
     }
 
 

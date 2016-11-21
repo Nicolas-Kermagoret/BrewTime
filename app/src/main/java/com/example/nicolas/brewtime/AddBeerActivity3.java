@@ -60,11 +60,8 @@ public class AddBeerActivity3 extends AppCompatActivity{
         final FloatingActionButton add_malt = (FloatingActionButton) this.findViewById(R.id.add_malt);
 
         this.beer = (Beer) this.getIntent().getSerializableExtra("Beer");
-
-
-
         this.setSupportActionBar((Toolbar) this.findViewById(R.id.toolbar));
-        this.getSupportActionBar().setTitle("Ingredients");
+        this.getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         ((FloatingActionButton) this.findViewById(R.id.add_malt)).setOnClickListener(new View.OnClickListener() {
 

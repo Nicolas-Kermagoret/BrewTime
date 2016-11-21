@@ -48,7 +48,8 @@ public class AddBeerActivity extends AppCompatActivity {
         setContentView(R.layout.add_beer_activity);
 
         this.setSupportActionBar((Toolbar)this.findViewById(R.id.toolbar));
-        this.getSupportActionBar().setTitle("Ajouter bière");
+        this.getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         this.brassageDate = (TextView)findViewById(R.id.ask_date);
 
         this.beer = new Beer();

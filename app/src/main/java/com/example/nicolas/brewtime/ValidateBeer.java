@@ -51,13 +51,8 @@ public class ValidateBeer extends AppCompatActivity {
         setContentView(R.layout.beer_display);
 
         this.beer = (Beer) this.getIntent().getSerializableExtra("Beer");
-//
-//        Toolbar mActionBarToolbar = (Toolbar) findViewById(R.id.toolbar);
-//        getSupportActionBar().setTitle(beer.getName());
-//        setSupportActionBar(mActionBarToolbar);
-
         this.setSupportActionBar((Toolbar) this.findViewById(R.id.toolbar));
-        this.getSupportActionBar().setTitle("Valider Bière");
+        this.getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         TextView type = (TextView) this.findViewById(R.id.beer_type);
         TextView date = (TextView) this.findViewById(R.id.beer_date);

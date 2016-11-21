@@ -11,7 +11,18 @@
        android:layout_height="wrap_content"
        android:layout_alignParentTop="true"
        android:background="@color/colorPrimary"
-       android:minHeight="?android:attr/actionBarSize" />
+       android:minHeight="?android:attr/actionBarSize">
+
+        <TextView
+            android:id="@+id/toolbarBeerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Valider Biere"
+            android:textColor="@color/colorBack"
+            android:textSize="22sp"/>
+
+        </android.support.v7.widget.Toolbar>
+
 
     <ScrollView
         android:layout_width="match_parent"
