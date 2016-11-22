@@ -200,6 +200,7 @@ public class MainActivity extends AppCompatActivity {
     public void deleteBeer(long id){
 
         this.beers.get((int)id).delete(this.getApplicationContext());
+        this.beers.remove((int)id);
         this.deleting=true;
         this.displayBeers();
         this.deleting=false;
