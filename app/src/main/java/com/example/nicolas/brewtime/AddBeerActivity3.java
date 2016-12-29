@@ -18,29 +18,43 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by nicolas on 26/08/16.
  */
 public class AddBeerActivity3 extends AppCompatActivity{
 
-    Beer beer;
-    ArrayList<Ingredient> ingredients;
+    private Beer beer;
+    private ArrayList<Ingredient> ingredients;
+    @BindView(R.id.listViewIngredients) ListView mListView;
+    private List<Map<String, String>> listeIngredients;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +63,10 @@ public class AddBeerActivity3 extends AppCompatActivity{
         final Context context = this.getApplicationContext();
         final LinearLayout layoutPopUp = new LinearLayout(this);
 
+        ButterKnife.bind(this);
+
         this.ingredients = new ArrayList<Ingredient>();
+        this.listeIngredients = new ArrayList<>();
 
         DialogFragment fragment;
 
@@ -88,8 +105,9 @@ public class AddBeerActivity3 extends AppCompatActivity{
                                 EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
                                 if (!name.getText().toString().matches("") && !quantity.getText().toString().matches("")) {
                                     Ingredient ingredient = new Ingredient(name.getText().toString(), "malt", Integer.parseInt(quantity.getText().toString()));
-                                    ingredients.add(ingredient);
-                                    inflateIngredient(ingredient);
+                                    addIngredient(ingredient);
+//                                    ingredients.add(ingredient);
+//                                    inflateIngredient(ingredient);
                                     Log.d("TEST", "Add ingredient");
                                 }
                             }
@@ -135,8 +153,9 @@ public class AddBeerActivity3 extends AppCompatActivity{
                                 EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
                                 if (!name.getText().toString().matches("") && !quantity.getText().toString().matches("")) {
                                     Ingredient ingredient = new Ingredient(name.getText().toString(), "houblonAm", Integer.parseInt(quantity.getText().toString()));
-                                    ingredients.add(ingredient);
-                                    inflateIngredient(ingredient);
+                                    addIngredient(ingredient);
+//                                    ingredients.add(ingredient);
+//                                    inflateIngredient(ingredient);
                                     Log.d("TEST", "Add ingredient");
                                 }
                             }
@@ -178,8 +197,9 @@ public class AddBeerActivity3 extends AppCompatActivity{
                                 EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
                                 if (!name.getText().toString().matches("") && !quantity.getText().toString().matches("")) {
                                     Ingredient ingredient = new Ingredient(name.getText().toString(), "houblonAr", Integer.parseInt(quantity.getText().toString()));
-                                    ingredients.add(ingredient);
-                                    inflateIngredient(ingredient);
+                                    addIngredient(ingredient);
+//                                    ingredients.add(ingredient);
+//                                    inflateIngredient(ingredient);
                                     Log.d("TEST", "Add ingredient");
                                 }
                             }
@@ -221,8 +241,9 @@ public class AddBeerActivity3 extends AppCompatActivity{
                                 EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
                                 if (!name.getText().toString().matches("") && !quantity.getText().toString().matches("")) {
                                     Ingredient ingredient = new Ingredient(name.getText().toString(), "epice", Integer.parseInt(quantity.getText().toString()));
-                                    ingredients.add(ingredient);
-                                    inflateIngredient(ingredient);
+                                    addIngredient(ingredient);
+//                                    ingredients.add(ingredient);
+//                                    inflateIngredient(ingredient);
                                     Log.d("TEST", "Add ingredient");
                                 }
                             }
@@ -264,8 +285,9 @@ public class AddBeerActivity3 extends AppCompatActivity{
                                 EditText quantity = (EditText)dialogView.findViewById(R.id.ingredient_quantity);
                                 if (!name.getText().toString().matches("") && !quantity.getText().toString().matches("")) {
                                     Ingredient ingredient = new Ingredient(name.getText().toString(), "levure", Integer.parseInt(quantity.getText().toString()));
-                                    ingredients.add(ingredient);
-                                    inflateIngredient(ingredient);
+                                    addIngredient(ingredient);
+//                                    ingredients.add(ingredient);
+//                                    inflateIngredient(ingredient);
                                 }
 
                             }
@@ -288,22 +310,6 @@ public class AddBeerActivity3 extends AppCompatActivity{
         return true;
     }
 
-    public void inflateIngredient(Ingredient ingredientToAdd){
-        LinearLayout layout = (LinearLayout)findViewById(R.id.list_ingredients);
-
-        View ingredient = getLayoutInflater().inflate(R.layout.list_ingredient, null);
-
-        TextView name = (TextView)ingredient.findViewById(R.id.list_ingredient_name);
-        name.setText(ingredientToAdd.getName());
-        TextView type = (TextView)ingredient.findViewById(R.id.list_ingredient_type);
-        type.setText(ingredientToAdd.getCleanType());
-        TextView quantity = (TextView)ingredient.findViewById(R.id.list_ingredient_quantity);
-        quantity.setText(String.valueOf(ingredientToAdd.getQuantity())+" g");
-
-        layout.addView(ingredient);
-
-    }
-
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         if (menuItem.getItemId() == R.id.bar_done) {
 
@@ -318,6 +324,68 @@ public class AddBeerActivity3 extends AppCompatActivity{
 
     public void setIngredients(){
         this.beer.setIngredients(ingredients);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.context_menu, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        switch (item.getItemId()) {
+            case R.id.edit:
+                Log.d("CASE", "Edit");
+                editIngredient(info.id);
+                return true;
+            case R.id.delete:
+                deleteIngredient(info.id);
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
+
+    public void editIngredient(long id){
+        Log.d("Edit beer","lalalala");
+    }
+
+    public void deleteIngredient(long id){
+
+    }
+
+    public void addIngredient(Ingredient ingredient){
+        ingredients.add(ingredient);
+        HashMap<String, String> element;
+        element = new HashMap<>();
+        element.put("name",ingredient.getName());
+        element.put("type", ingredient.getType());
+        element.put("quantity", Integer.toString(ingredient.getQuantity()) +"g");
+        this.listeIngredients.add(element);
+        this.displayIngredients();
+
+    }
+
+    public void displayIngredients(){
+
+//        if(deleting){
+//            mListView.setAdapter(null);
+//        }
+
+
+        String[] from = {"name", "type", "quantity"};
+        int[] to = {R.id.list_ingredient_name, R.id.list_ingredient_type, R.id.list_ingredient_quantity};
+
+        //Instanciation du SimpleAdapter avec ce qu'on veut afficher dans le ListView
+
+        ListAdapter adapter = new SimpleAdapter(this, this.listeIngredients, R.layout.list_ingredient, from, to);
+
+        mListView.setAdapter(adapter);
+
     }
 
 }

@@ -20,20 +20,13 @@
             android:textSize="22sp"/>
         </android.support.v7.widget.Toolbar>
 
-    <ScrollView
+    <ListView
+        android:id="@+id/listViewIngredients"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar"
-        android:layout_alignParentLeft="true">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/list_ingredients"
-            android:orientation="vertical"
-            >
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar">
 
-        </LinearLayout>
-    </ScrollView>
+    </ListView>
 
 
 
