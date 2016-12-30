@@ -39,6 +39,7 @@ import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -167,6 +168,8 @@ public class MainActivity extends AppCompatActivity {
                 this.beers.add(gson.fromJson(beerJson, Beer.class));
             }
         }
+
+        Collections.sort(this.beers, (beer1, beer2) -> beer1.getName().compareTo(beer2.getName()));
     }
 
     @Override
